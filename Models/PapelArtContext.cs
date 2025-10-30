@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PapelArt.Models;
 
 namespace PapelArt.Models
 {
@@ -15,7 +16,14 @@ namespace PapelArt.Models
         public DbSet<movimentacoes> movimentacoes { get; set; }
         public DbSet<usuarios> usuarios { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Define os nomes exatos das tabelas e colunas no banco
+            modelBuilder.Entity<produtos>().ToTable("produtos");
+            modelBuilder.Entity<categorias>().ToTable("categorias");
+            modelBuilder.Entity<movimentacoes>().ToTable("movimentacoes");
+            modelBuilder.Entity<usuarios>().ToTable("usuarios");
+        }
     }
 }
 

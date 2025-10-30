@@ -5,7 +5,7 @@ namespace PapelArt.Models
      // Representa o usuário que faz login no sistema
     public class usuarios
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Required, StringLength(100)]
         public string nome { get; set; } = string.Empty;

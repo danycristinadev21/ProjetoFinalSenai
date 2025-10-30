@@ -29,7 +29,7 @@
 
     <div class="form-group">
         <label>Categoria</label>
-        <select asp-for="id_categoria" class="form-control" asp-items="@(new SelectList(ViewBag.Categorias, "Id", "Nome"))">
+        <select asp-for="id_categoria" class="form-control" asp-items="@(new SelectList(ViewBag.Categorias, "id", "nome"))">
             <option value="">Selecione...</option>
         </select>
     </div>
