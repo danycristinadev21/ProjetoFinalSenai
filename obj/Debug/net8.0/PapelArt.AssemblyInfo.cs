@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PapelArt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af978a67affb020a2b7468a66d0bfa412060ecef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2acca1df7007df5d2122bbb9bf698c644d332d0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PapelArt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PapelArt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,41 +1,59 @@
 @model PapelArt.Models.produtos
-
 @{
-    ViewData["Title"] = "Novo Produto";
+    ViewData["Title"] = "Cadastrar Produto";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h2 class="text-center mb-4">Cadastrar Produto</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label>Nome</label>
-        <input asp-for="nome" class="form-control" required />
+<form asp-action="Create" method="post" class="w-50 mx-auto">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="nome" class="form-label">Nome</label>
+        <input asp-for="nome" class="form-control" />
+        <span asp-validation-for="nome" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label>Descrição</label>
+    <div class="form-group mb-3">
+        <label asp-for="descricao" class="form-label">Descrição</label>
         <textarea asp-for="descricao" class="form-control"></textarea>
     </div>
 
-    <div class="form-group">
-        <label>Preço</label>
-        <input asp-for="preco" class="form-control" type="number" step="0.01" required />
+    <div class="form-group mb-3">
+        <label asp-for="preco" class="form-label">Preço</label>
+        <input asp-for="preco" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="preco" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label>Quantidade</label>
-        <input asp-for="quantidade" class="form-control" type="number" required />
+    <div class="form-group mb-3">
+        <label asp-for="quantidade" class="form-label">Quantidade</label>
+        <input asp-for="quantidade" class="form-control" type="number" />
+        <span asp-validation-for="quantidade" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label>Categoria</label>
-        <select asp-for="id_categoria" class="form-control" asp-items="@(new SelectList(ViewBag.Categorias, "id", "nome"))">
-            <option value="">Selecione...</option>
+    <div class="form-group mb-3">
+        <label asp-for="estoque_minimo" class="form-label">Estoque Mínimo</label>
+        <input asp-for="estoque_minimo" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="estoque_maximo" class="form-label">Estoque Máximo</label>
+        <input asp-for="estoque_maximo" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Categoria</label>
+        <select asp-for="id_categoria" class="form-select" asp-items="@(new SelectList(ViewBag.Categorias, "id", "nome"))">
+            <option value="">Selecione uma categoria</option>
         </select>
+        <span asp-validation-for="id_categoria" class="text-danger"></span>
     </div>
 
-    <div class="form-group mt-3">
-        <input type="submit" value="Salvar" class="btn btn-success" />
-        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
-    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
