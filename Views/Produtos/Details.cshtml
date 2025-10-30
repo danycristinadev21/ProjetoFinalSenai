@@ -1,0 +1,20 @@
+@model PapelArt.Models.produtos
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card p-3">
+    <h4>@Model.nome</h4>
+    <p><strong>Descrição:</strong> @Model.descricao</p>
+    <p><strong>Preço:</strong> R$ @Model.preco</p>
+    <p><strong>Quantidade:</strong> @Model.quantidade</p>
+    <p><strong>Categoria:</strong> @Model.categoria?.nome</p>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>

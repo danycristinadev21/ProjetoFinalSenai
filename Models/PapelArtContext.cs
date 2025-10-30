@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PapelArt.Models
 {
-    // Classe que representa o banco de dados
     public class PapelArtContext : DbContext
     {
         public PapelArtContext(DbContextOptions<PapelArtContext> options)
@@ -10,9 +9,13 @@ namespace PapelArt.Models
         {
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Movimentacao> Movimentacoes { get; set; }
+        
+        public DbSet<produtos> produtos { get; set; }
+        public DbSet<categorias> categorias { get; set; }
+        public DbSet<movimentacoes> movimentacoes { get; set; }
+        public DbSet<usuarios> usuarios { get; set; }
+
+        
     }
 }
+

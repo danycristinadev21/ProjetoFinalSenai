@@ -1,0 +1,41 @@
+@model IEnumerable<PapelArt.Models.produtos>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">➕ Novo Produto</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.nome</td>
+        <td>@item.descricao</td>
+        <td>R$ @item.preco</td>
+        <td>@item.quantidade</td>
+        <td>@item.categoria?.nome</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning btn-sm">✏️ Editar</a>
+            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info btn-sm">🔍 Detalhes</a>
+            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger btn-sm">🗑️ Excluir</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

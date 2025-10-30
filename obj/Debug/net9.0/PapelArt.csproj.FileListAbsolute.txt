@@ -314,3 +314,4 @@ C:\ProjetoFinal\PapelArt\obj\Debug\net9.0\refint\PapelArt.dll
 C:\ProjetoFinal\PapelArt\obj\Debug\net9.0\PapelArt.pdb
 C:\ProjetoFinal\PapelArt\obj\Debug\net9.0\PapelArt.genruntimeconfig.cache
 C:\ProjetoFinal\PapelArt\obj\Debug\net9.0\ref\PapelArt.dll
+C:\ProjetoFinal\PapelArt\obj\Debug\net9.0\PapelArt.sourcelink.json
