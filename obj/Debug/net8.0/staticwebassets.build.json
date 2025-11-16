@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Iwlhjdu5BIoFI5ttN47zyjdnSrqCmVifo/oFvq+knhQ=",
+  "Hash": "u375e6P8CoYlEV4EH0hg0u8CdutcIkVGnXC4WsVMMr0=",
   "Source": "PapelArt",
   "BasePath": "_content/PapelArt",
   "Mode": "Default",
@@ -59,6 +59,27 @@
       "OriginalItemSpec": "C:\\ProjetoFinal\\PapelArt\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\PapelArt.bundle.scp.css"
     },
     {
+      "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\login-cadastro.css",
+      "SourceId": "PapelArt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\",
+      "BasePath": "_content/PapelArt",
+      "RelativePath": "css/login-cadastro#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bwtbm1js87",
+      "Integrity": "5elnfZjBUZCYshshOlf536QKhjp5Yu+WJgQbjvznrgE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login-cadastro.css"
+    },
+    {
       "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\site.css",
       "SourceId": "PapelArt",
       "SourceType": "Discovered",
@@ -73,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b9sayid5wm",
-      "Integrity": "j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=",
+      "Fingerprint": "2t3d3dwt6q",
+      "Integrity": "hssd2efaLbZdR7qLDAqdGFlKslgpW4V2UXphqWlyvzw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -99,6 +120,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\fundo.jpg",
+      "SourceId": "PapelArt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\",
+      "BasePath": "_content/PapelArt",
+      "RelativePath": "images/fundo#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "buvium11us",
+      "Integrity": "TUjM6KUrND6aAK1k4knFxSlQxP5N9u4SW2JGKYL7SJY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\fundo.jpg"
+    },
+    {
+      "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logo.jpg",
+      "SourceId": "PapelArt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\",
+      "BasePath": "_content/PapelArt",
+      "RelativePath": "images/logo#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ssqh58zzln",
+      "Integrity": "7NaE4XGMlpoFxp52oxwa8W1xZtzNm1ZnvqhfWZIWJUQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo.jpg"
+    },
+    {
+      "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logoP.jpg",
+      "SourceId": "PapelArt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\",
+      "BasePath": "_content/PapelArt",
+      "RelativePath": "images/logoP#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "efug51ws6o",
+      "Integrity": "CsdNv0TbVyNDiKpxpzArxajzVa9psf6iF6d2hebgQuA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logoP.jpg"
+    },
+    {
+      "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\rodape.jpg",
+      "SourceId": "PapelArt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\",
+      "BasePath": "_content/PapelArt",
+      "RelativePath": "images/rodape#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "klnj8ed1ko",
+      "Integrity": "OA6GaRVYUjd3grWIZ4i69799S/I1b74FoCQewli+dx8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\rodape.jpg"
     },
     {
       "Identity": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\js\\site.js",
@@ -1384,8 +1489,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\site.css",
+      "Route": "css/login-cadastro.bwtbm1js87.css",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\login-cadastro.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1394,7 +1499,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "2693"
         },
         {
           "Name": "Content-Type",
@@ -1402,11 +1507,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"5elnfZjBUZCYshshOlf536QKhjp5Yu+WJgQbjvznrgE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Oct 2025 19:56:52 GMT"
+          "Value": "Tue, 11 Nov 2025 00:28:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1416,7 +1521,89 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b9sayid5wm"
+          "Value": "bwtbm1js87"
+        },
+        {
+          "Name": "label",
+          "Value": "css/login-cadastro.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5elnfZjBUZCYshshOlf536QKhjp5Yu+WJgQbjvznrgE="
+        }
+      ]
+    },
+    {
+      "Route": "css/login-cadastro.css",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\login-cadastro.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2693"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5elnfZjBUZCYshshOlf536QKhjp5Yu+WJgQbjvznrgE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Nov 2025 00:28:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5elnfZjBUZCYshshOlf536QKhjp5Yu+WJgQbjvznrgE="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.2t3d3dwt6q.css",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8317"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hssd2efaLbZdR7qLDAqdGFlKslgpW4V2UXphqWlyvzw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Nov 2025 23:41:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2t3d3dwt6q"
         },
         {
           "Name": "label",
@@ -1424,7 +1611,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-hssd2efaLbZdR7qLDAqdGFlKslgpW4V2UXphqWlyvzw="
         }
       ]
     },
@@ -1439,7 +1626,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "667"
+          "Value": "8317"
         },
         {
           "Name": "Content-Type",
@@ -1447,11 +1634,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
+          "Value": "\"hssd2efaLbZdR7qLDAqdGFlKslgpW4V2UXphqWlyvzw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Oct 2025 19:56:52 GMT"
+          "Value": "Mon, 10 Nov 2025 23:41:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1461,7 +1648,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+          "Value": "sha256-hssd2efaLbZdR7qLDAqdGFlKslgpW4V2UXphqWlyvzw="
         }
       ]
     },
@@ -1544,6 +1731,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/fundo.buvium11us.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\fundo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "461058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TUjM6KUrND6aAK1k4knFxSlQxP5N9u4SW2JGKYL7SJY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 19 Oct 2025 20:20:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "buvium11us"
+        },
+        {
+          "Name": "label",
+          "Value": "images/fundo.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TUjM6KUrND6aAK1k4knFxSlQxP5N9u4SW2JGKYL7SJY="
+        }
+      ]
+    },
+    {
+      "Route": "images/fundo.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\fundo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "461058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TUjM6KUrND6aAK1k4knFxSlQxP5N9u4SW2JGKYL7SJY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 19 Oct 2025 20:20:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TUjM6KUrND6aAK1k4knFxSlQxP5N9u4SW2JGKYL7SJY="
+        }
+      ]
+    },
+    {
+      "Route": "images/logo.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41132"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7NaE4XGMlpoFxp52oxwa8W1xZtzNm1ZnvqhfWZIWJUQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Nov 2025 01:49:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7NaE4XGMlpoFxp52oxwa8W1xZtzNm1ZnvqhfWZIWJUQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/logo.ssqh58zzln.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41132"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7NaE4XGMlpoFxp52oxwa8W1xZtzNm1ZnvqhfWZIWJUQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Nov 2025 01:49:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ssqh58zzln"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logo.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7NaE4XGMlpoFxp52oxwa8W1xZtzNm1ZnvqhfWZIWJUQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/logoP.efug51ws6o.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logoP.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34340"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CsdNv0TbVyNDiKpxpzArxajzVa9psf6iF6d2hebgQuA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Nov 2025 00:32:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "efug51ws6o"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logoP.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CsdNv0TbVyNDiKpxpzArxajzVa9psf6iF6d2hebgQuA="
+        }
+      ]
+    },
+    {
+      "Route": "images/logoP.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logoP.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34340"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CsdNv0TbVyNDiKpxpzArxajzVa9psf6iF6d2hebgQuA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Nov 2025 00:32:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CsdNv0TbVyNDiKpxpzArxajzVa9psf6iF6d2hebgQuA="
+        }
+      ]
+    },
+    {
+      "Route": "images/rodape.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\rodape.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "177420"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OA6GaRVYUjd3grWIZ4i69799S/I1b74FoCQewli+dx8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 18 Oct 2025 20:22:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OA6GaRVYUjd3grWIZ4i69799S/I1b74FoCQewli+dx8="
+        }
+      ]
+    },
+    {
+      "Route": "images/rodape.klnj8ed1ko.jpg",
+      "AssetFile": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\rodape.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "177420"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OA6GaRVYUjd3grWIZ4i69799S/I1b74FoCQewli+dx8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 18 Oct 2025 20:22:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "klnj8ed1ko"
+        },
+        {
+          "Name": "label",
+          "Value": "images/rodape.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OA6GaRVYUjd3grWIZ4i69799S/I1b74FoCQewli+dx8="
         }
       ]
     },

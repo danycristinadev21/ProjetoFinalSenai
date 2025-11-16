@@ -1,31 +1,401 @@
-html {
-  font-size: 14px;
+/* ===========================
+   ESTILO PRINCIPAL PAPELART
+   =========================== */
+
+/* 🎨 Paleta de cores */
+:root {
+    --amarelo-sol: #FFC629;
+    --laranja-vibrante: #FF7C2C;
+    --vermelho-coral: #F33E33;
+    --branco: #ffffff;
+    --cinza-claro: #f8f9fa;
+    --cinza-escuro: #333333;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Corpo geral */
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* === PÁGINA INICIAL AJUSTÁVEL E SEM ROLAGEM === */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* ❌ Remove barras de rolagem */
+    background-color: #FFFFFF; /* Fundo branco */
+    
+}
+
+/* Cabeçalhos */
+h2, h3, h4, h5 {
+    color: var(--vermelho-coral);
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Botões */
+.btn-papelart {
+    background-color: var(--laranja-vibrante);
+    color: var(--branco);
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.btn-papelart:hover {
+    background-color: var(--vermelho-coral);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--amarelo-sol);
+    border-bottom: 3px solid var(--vermelho-coral);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--vermelho-coral) !important;
+}
+
+/* Formulários */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid var(--laranja-vibrante);
+}
+
+label {
+    color: var(--vermelho-coral);
+    font-weight: 600;
+}
+
+/* ===== Rodapé decorativo PapelArt ===== */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: url('../images/rodape.jpg'); /* nome atualizado */
+    background-repeat: repeat-x;
+    background-size: cover;
+    z-index: 999;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.footer-img {
+    width: 100%;
+    display: block;
+}
+
+/* Mensagens de sucesso */
+.alert-success {
+    background-color: var(--amarelo-sol);
+    color: var(--cinza-escuro);
+    border: none;
+    font-weight: bold;
+}
+
+/* Tabelas */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table thead {
+    background-color: var(--laranja-vibrante);
+    color: var(--branco);
+}
+
+.logo-home {
+    width: 25vw; /* 18% da largura da tela */
+    max-width: 150px;
+    min-width: 100px;
+    margin-bottom: 20px;
+}
+
+/* ======== Tela Inicial / Home ======== */
+/* Contêiner principal centralizado vertical e horizontalmente */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 100px); /* Deixa espaço p/ o rodapé */
+    text-align: center;
+    padding-top: 60px; /* controla a distância do topo */
+    box-sizing: border-box;
+}
+
+/* Texto principal (Bem-vindo) */
+.home-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    /*font-size: clamp(48px, 6vw, 72px);*/
+    font-size: clamp(1.7rem, 4vw, 3rem);
+    color: #F33E33; /* Cor base de fallback */
+    background: linear-gradient(180deg, #FF7C2C 20%, #F33E33 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #F33E33; /* Garante exibição forte */
+    text-shadow: 2px 2px 8px #FFC629;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.home-subtitle {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+    /*font-size: clamp(32px, 3.5vw, 52px);*/
+    font-size: clamp(1.7rem, 4vw, 3rem);
+    color: #F33E33; /* Cor base sólida */
+    background: linear-gradient(180deg, #FF7C2C 20%, #F33E33 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #F33E33; /* Mostra cor sólida */
+    text-shadow: 2px 2px 8px #FFC629;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+
+/* Logo centralizado com animação de hover */
+.home-logo {
+    width: clamp(180px, 25vw, 280px); /* Responsivo */
+    height: auto;
+    margin: 15px 0 15px 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.home-logo:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 198, 41, 0.8));
+}
+
+.home-logo-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.home-logo-link:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Responsividade adicional para dispositivos móveis */
+@media (max-height: 500px) {
+    .home-container {
+        padding: 20px;
+        justify-content: flex-start;
+    }
+}
+
+/* ===== Barras coloridas do topo ===== */
+.header-bars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.bar-top {
+    height: 50px; /* Mais larga */
+    background-color: #FF7C2C; /* Laranja */
+}
+
+.bar-bottom {
+    height: 20px; /* Mais estreita */
+    background-color: #FFC629; /* Amarelo */
+}
+
+/* Barras superiores */
+.top-bar {
+    background-color: #FF7C2C;
+    height: 25px;
+}
+.sub-bar {
+    background-color: #FFC629;
+    height: 10px;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 10px 30px;
+}
+.logo {
+    height: 80px;
+    margin-right: 20px;
+}
+.header-text h1 {
+    font-size: 1.6rem;
+    color: #FF7C2C;
+    margin: 0;
+    font-weight: bold;
+}
+.header-text h2 {
+    font-size: 1.2rem;
+    color: #F33E33;
+    margin: 5px 0 0;
+}
+
+/* Containers */
+.login-container, .cadastro-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+.login-title, .cadastro-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F33E33;
+    text-shadow: 2px 2px #FFC629;
+    margin-bottom: 30px;
+}
+
+/* Inputs e botões */
+form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+form input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #FF7C2C;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.btn-principal {
+    background-color: #FF7C2C;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px #F33E33;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-principal:hover {
+    transform: scale(1.05);
+    background-color: #F33E33;
+}
+.cadastro-text {
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+.cadastro-text a {
+    color: #F33E33;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mensagens */
+.erro-msg {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.sucesso-msg {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Rodapé */
+.rodape {
+    width: 100%;
+    display: block;
+}
+
+.top-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #FF7C2C; /* Laranja */
+    border-bottom: 5px solid #FFC629; /* Amarelo */
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 15px;
+}
+
+/*.logo {
+    height: 100px;
+    width: auto;
+}*/
+
+.titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F33E33;
+    text-shadow: 2px 2px 2px #FFC629;
+    margin: 0;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: #FF7C2C;
+    text-shadow: 1px 1px 1px #FFC629;
+    margin-top: 4px;
+}
+
+.form-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer img.rodape {
+    width: 100%;
+    height: auto;
+    display: block;
 }

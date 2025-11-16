@@ -1,0 +1,145 @@
+/* === login-cadastro.css === */
+/* Paleta de cores do projeto PapelArt */
+:root {
+  --amarelo: #FFC629;
+  --laranja: #FF7C2C;
+  --vermelho: #F33E33;
+}
+
+/* Reset básico */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Zen Maru Gothic", sans-serif;
+  background: url("/images/fundo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+.header {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  height: 90px;
+  margin-right: 10px;
+  margin-left: 35px;
+}
+
+.header .titulo {
+  flex: 1;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--vermelho);
+  text-shadow: 2px 2px var(--amarelo);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--laranja);
+  text-shadow: 1px 1px var(--amarelo);
+}
+
+/* Conteúdo central */
+.container-login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 10px;
+}
+
+.card-login {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 15px;
+  padding: 40px 35px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.card-login h2 {
+  color: var(--vermelho);
+  margin-bottom: 25px;
+  text-shadow: 1px 1px var(--amarelo);
+}
+
+.card-login label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  color: var(--laranja);
+  margin-top: 10px;
+}
+
+.card-login input, .card-login select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.card-login button {
+  width: 100%;
+  background: linear-gradient(90deg, var(--laranja), var(--vermelho));
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-login button:hover {
+  background: linear-gradient(90deg, var(--vermelho), var(--laranja));
+  transform: scale(1.03);
+}
+
+/* Rodapé */
+footer {
+  background: url("/images/rodape.jpg") no-repeat center bottom;
+  background-size: cover;
+  height: 80px;
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .header h2 {
+    font-size: 1rem;
+  }
+  .card-login {
+    padding: 30px 25px;
+  }
+}
+
+

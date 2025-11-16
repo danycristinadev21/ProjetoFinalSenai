@@ -1,23 +1,29 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PapelArt.Models
 {
-     // Representa o usuário que faz login no sistema
+    [Table("usuarios")]
     public class usuarios
     {
+        [Key]
         public int id { get; set; }
 
-        [Required, StringLength(100)]
+        [Required(ErrorMessage = "O nome é obrigatório.")]
+        [StringLength(100)]
         public string nome { get; set; } = string.Empty;
 
-        [Required, EmailAddress]
+        [Required(ErrorMessage = "O e-mail é obrigatório.")]
+        [EmailAddress(ErrorMessage = "E-mail inválido.")]
+        [StringLength(100)]
         public string email { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [StringLength(255)]
         public string senha { get; set; } = string.Empty;
 
-        // Pode ser 'admin' ou 'usuario'
         [Required]
+        [Column("nivel_acesso")]
         public string nivel_acesso { get; set; } = "usuario";
     }
 }

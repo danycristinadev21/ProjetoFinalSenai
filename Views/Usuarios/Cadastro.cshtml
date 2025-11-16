@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Cadastro de Acesso";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <div class="container-login">
+        <div class="card-login">
+            <h2>CADASTRO DE USUÁRIO</h2>
+            @if (TempData["Error"] != null) 
+            {
+                <div class="alert alert-danger" role="alert">
+                @TempData["Error"]
+                </div>
+            }
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                @TempData["Success"]
+                </div>
+            }
+            <form asp-action="Cadastrar" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required />
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required />
+
+                <label for="nivel_acesso">Nível de Acesso</label>
+                <select id="nivel_acesso" name="nivel_acesso" required>
+                    <option value="usuario">Usuário</option>
+                </select>
+
+                <button type="submit">CADASTRAR</button>
+            </form>
+
+            <p style="margin-top: 15px;">
+                Já tem uma conta?
+                <a href="/Usuarios/Login" class="btn btn-link" style="color: var(--laranja); font-weight: bold;">Faça login aqui</a>
+            </p>
+        </div>
+    </div>
+
+    <footer></footer>
+</body>
+</html>
+
+
+
+

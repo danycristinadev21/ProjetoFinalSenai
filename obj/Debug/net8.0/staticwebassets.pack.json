@@ -5,12 +5,32 @@
       "PackagePath": "staticwebassets\\PapelArt.pv22hsgi0b.bundle.scp.css"
     },
     {
+      "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\login-cadastro.css",
+      "PackagePath": "staticwebassets\\css\\login-cadastro.css"
+    },
+    {
       "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\fundo.jpg",
+      "PackagePath": "staticwebassets\\images\\fundo.jpg"
+    },
+    {
+      "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logo.jpg"
+    },
+    {
+      "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\logoP.jpg",
+      "PackagePath": "staticwebassets\\images\\logoP.jpg"
+    },
+    {
+      "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\images\\rodape.jpg",
+      "PackagePath": "staticwebassets\\images\\rodape.jpg"
     },
     {
       "Id": "C:\\ProjetoFinal\\PapelArt\\wwwroot\\js\\site.js",
