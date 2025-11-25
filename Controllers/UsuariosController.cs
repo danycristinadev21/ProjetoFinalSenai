@@ -45,7 +45,7 @@ namespace PapelArt.Controllers
             if (usuario != null)
             {
                 TempData["Success"] = $"Bem-vindo(a), {usuario.nome}!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Menu", "Home");
             }
 
             TempData["Error"] = "E-mail ou senha incorretos.";

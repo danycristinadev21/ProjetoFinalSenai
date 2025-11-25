@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProjetoFinal\\PapelArt\\PapelArt.csproj": {}
+    "C:\\ProjetoFinalSenai\\PapelArt.csproj": {}
   },
   "projects": {
-    "C:\\ProjetoFinal\\PapelArt\\PapelArt.csproj": {
+    "C:\\ProjetoFinalSenai\\PapelArt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProjetoFinal\\PapelArt\\PapelArt.csproj",
+        "projectUniqueName": "C:\\ProjetoFinalSenai\\PapelArt.csproj",
         "projectName": "PapelArt",
-        "projectPath": "C:\\ProjetoFinal\\PapelArt\\PapelArt.csproj",
+        "projectPath": "C:\\ProjetoFinalSenai\\PapelArt.csproj",
         "packagesPath": "C:\\Users\\Daniela\\.nuget\\packages\\",
-        "outputPath": "C:\\ProjetoFinal\\PapelArt\\obj\\",
+        "outputPath": "C:\\ProjetoFinalSenai\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c5x7+rtVx0Q=",
+  "dgSpecHash": "gLMQkP7glyU=",
   "success": true,
-  "projectFilePath": "C:\\ProjetoFinal\\PapelArt\\PapelArt.csproj",
+  "projectFilePath": "C:\\ProjetoFinalSenai\\PapelArt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniela\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Daniela\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

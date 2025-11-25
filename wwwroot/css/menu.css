@@ -1,0 +1,106 @@
+/* ======== TÍTULO COM GRADIENTE ======== */
+.menu-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 3vw;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 2rem;
+
+    background: linear-gradient(180deg, #FF7C2C 60%, #F33E33 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 3px 1px white;
+}
+
+/* ======== CONTAINER PRINCIPAL ======== */
+.menu-wrapper {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    padding: 2rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+      margin: 0;
+
+}
+
+/* ======== BOTÕES GRANDES ======== */
+.menu-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.menu-btn {
+    background: #FF7C2C;
+    border: none;
+    padding: 1.4rem 2.5rem;
+    border-radius: 20px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+
+    font-size: 1.7vw;
+    letter-spacing: 2px;
+
+    color: white;
+    text-shadow: 0px 2px 1px #F33E33;
+
+    box-shadow: 0px 6px 0px #E86A22;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+    min-width: 280px;
+    text-align: center;
+}
+
+.menu-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ======== BOTÕES INFERIORES ======== */
+
+.menu-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+
+    background-image: url('/images/rodape.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.menu-footer .footer-btn {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: white;
+    border: 3px solid #FF7C2C;
+
+    font-size: 1.2vw;
+    font-weight: 700;
+
+    color: #E34A2B;
+    cursor: pointer;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 6vw;
+    }
+    .menu-btn {
+        font-size: 3.8vw;
+        padding: 1rem 2rem;
+    }
+    .menu-footer .footer-btn {
+        font-size: 3vw;
+    }
+}
+

@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Menu";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+
+
+
+<div class="menu-wrapper">
+
+    <h1 class="menu-title">ESCOLHA UMA FUNÇÃO</h1>
+
+    <div class="menu-buttons">
+
+        <a href="/Categorias/Create" class="menu-btn">CADASTRAR<br/>CATEGORIA</a>
+
+        <a href="/Produtos/Create" class="menu-btn">CADASTRAR<br/>PRODUTO</a>
+
+        <a href="/Produtos" class="menu-btn">CONSULTAR<br/>ESTOQUE</a>
+
+        <a href="/Movimentacoes/Create" class="menu-btn">
+            REGISTRAR<br/>ENTRADA/SAÍDA
+        </a>
+
+        <a href="/Relatorios/Index" class="menu-btn">
+            GERAR<br/>RELATÓRIO
+        </a>
+
+    </div>
+</div>
+
+<!-- Rodapé -->
+<div class="menu-footer">
+    <a href="/Usuarios/Login" class="footer-btn">⬅ VOLTAR</a>
+    <a href="/Home/Index" class="footer-btn">SAIR ➜</a>
+</div>
+
+</body>
+</html>
