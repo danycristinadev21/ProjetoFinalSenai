@@ -31,16 +31,21 @@ body {
     background-color: white;
 }
 
-/* === PÁGINA INICIAL AJUSTÁVEL E SEM ROLAGEM === */
-
-body, html {
-    height: 100%;
+/* ===== CONFIGURAÇÃO GLOBAL ===== */
+html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* ❌ Remove barras de rolagem */
-    background-color: #FFFFFF; /* Fundo branco */
-    
+    height: auto;        /* permite que páginas cresçam normalmente */
+    overflow-x: hidden;  /* evita barra lateral indesejada */
+    overflow-y: auto;    /* ✔ restaura rolagem normal */
+    background-color: #FFFFFF;
 }
+
+/* ===== RESTRIÇÃO APLICADA SOMENTE À TELA INICIAL ===== */
+body.tela-inicial {
+    overflow: hidden !important;  /* bloqueia rolagem apenas na home */
+}
+
 
 /* Cabeçalhos */
 h2, h3, h4, h5 {
@@ -288,18 +293,23 @@ footer {
 }
 
 /* Inputs e botões */
-form label {
+/* FORMULÁRIOS: aplicável somente a login / cadastro de usuário */
+form.login-form label,
+form.user-form label {
     display: block;
     font-weight: bold;
     margin: 10px 0 5px;
 }
-form input {
+
+form.login-form input,
+form.user-form input {
     width: 100%;
     padding: 8px;
     border: 2px solid #FF7C2C;
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
 .btn-principal {
     background-color: #FF7C2C;
     color: white;

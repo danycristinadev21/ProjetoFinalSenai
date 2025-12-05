@@ -2,9 +2,10 @@
 .menu-title {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 3vw;
-    font-weight: 700;
+    font-weight: 800;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
     background: linear-gradient(180deg, #FF7C2C 60%, #F33E33 100%);
     -webkit-background-clip: text;
@@ -23,7 +24,7 @@
     flex-direction: column;
     align-items: center;
     gap: 3rem;
-      margin: 0;
+    margin: 0;
 
 }
 
@@ -40,13 +41,13 @@
 .menu-btn {
     background: #FF7C2C;
     border: none;
-    padding: 1.4rem 2.5rem;
-    border-radius: 20px;
+    padding: 1rem 2rem;
+    border-radius: 22px;
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 700;
+    font-weight: 800;
 
-    font-size: 1.7vw;
-    letter-spacing: 2px;
+    font-size: 1.5vw;
+    letter-spacing: 1px;
 
     color: white;
     text-shadow: 0px 2px 1px #F33E33;
@@ -55,7 +56,7 @@
     cursor: pointer;
 
     transition: transform 0.2s ease;
-    min-width: 280px;
+    min-width: 250px;
     text-align: center;
 }
 
@@ -63,31 +64,33 @@
     transform: scale(1.05);
 }
 
-/* ======== BOTÕES INFERIORES ======== */
-
+/* ===== RODAPÉ ===== */
 .menu-footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 2rem;
-
-    background-image: url('/images/rodape.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-image: url('/images/rodape.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  box-sizing: border-box;
+  z-index: 50;
 }
 
-.menu-footer .footer-btn {
-    font-family: 'Zen Maru Gothic', sans-serif;
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    background: white;
-    border: 3px solid #FF7C2C;
-
-    font-size: 1.2vw;
-    font-weight: 700;
-
-    color: #E34A2B;
-    cursor: pointer;
+.footer-btn {
+  background: #fff;
+  padding: 6px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #F33E33;
+  border: 3px solid #FF7C2C;
+  text-decoration: none;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.15);
 }
 
 /* ======== RESPONSIVIDADE ======== */

@@ -1,0 +1,253 @@
+/* ==========================================================
+   cadastro-produto.css — versão limpa e estável
+   Mantém layout atual, corrige corte por footer e centraliza inputs
+   ========================================================== */
+
+/* ===== BASE E ESPAÇO PARA FOOTER ===== */
+html, body {
+  /* garante que a página role mesmo se outro CSS definir overflow: hidden */
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('/images/fundo.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Zen Maru Gothic", sans-serif;
+  padding-bottom: 100px; /* espaço para o footer fixo */
+  margin: 0;
+}
+
+/* wrapper que existe no HTML (garante espaço extra) */
+.container-centered {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px; /* garante que conteúdo não fique por baixo do footer */
+  box-sizing: border-box;
+}
+
+/* ===== TÍTULO ===== */
+.cadastro-titulo {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 1200;
+  margin-top: 18px;
+  margin-bottom: 18px;
+
+    background: linear-gradient(180deg, #FF7C2C 60%, #F33E33 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 3px 1px white;
+}
+
+/* ===== CONTAINER PRINCIPAL (form + painel) ===== */
+.cadastro-produto-container {
+  max-width: 1100px;
+  margin: 0 auto 24px auto;
+  padding: 40px 50px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  background: rgba(255, 220, 180, 0.5);
+  border-radius: 28px;
+  border: 3px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(3px);
+  box-sizing: border-box;
+}
+
+/* ===== FORM ===== */
+.form-produto {
+  flex: 2;
+}
+
+/* linha do form (label + campo) */
+.linha {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px; /* ajuste espaçamento entre campos */
+  margin-top: 30px;
+}
+
+/* label */
+.linha label {
+  min-width: 120px;
+  font-weight: 700;
+  color: #F33E33;
+  font-size: 16px;
+}
+
+/* ===== CAMPOS (INPUT / SELECT) =====
+   - Limitamos largura visual com max-width
+   - Altura definida (42px) e padding vertical zero/pequeno para centralizar
+   - Aplica apenas aos campos do formulário de produto
+*/
+form.form-produto .linha input,
+form.form-produto .linha select,
+form.form-produto input,
+form.form-produto select {
+  flex: 1 1 auto;
+  max-width: 450px;   /* largura visual dos campos */
+  width: 100%;
+
+  height: 42px;       /* altura final */
+  padding: 0 12px;    /* padding vertical zero para facilitar centralização */
+  font-size: 15px;
+  box-sizing: border-box;
+
+  border: 2px solid #FF7C2C;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+}
+
+/* selects: garantir que o texto fique centralizado em browsers */
+form.form-produto .linha select,
+form.form-produto select {
+  line-height: 42px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 28px; /* espaço para a setinha do select */
+}
+
+/* Se preferir o campo mais estreito em telas grandes, ajuste max-width acima */
+
+/* ===== BOTÃO CADASTRAR ===== */
+.btn-cadastrar-produto {
+  display: block;
+  margin: 40px auto 0 auto;
+  padding: 10px 130px;
+
+  background: linear-gradient(180deg, #FF7C2C, #F33E33);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #E1542A;
+  transition: transform 0.15s ease;
+}
+
+.btn-cadastrar-produto:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== PAINEL RÁPIDO (direita) ===== */
+.painel-rapido {
+  flex: 1;
+  background: rgba(255, 240, 210, 0.50);
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+
+  border: 4px solid rgba(255,255,255,0.9);
+  backdrop-filter: blur(1px);
+  box-sizing: border-box;
+}
+
+.painel-rapido h2,
+.painel-rapido h3 {
+  color: #F33E33;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* padroniza links dentro do painel (garante cores consistentes) */
+.painel-rapido a,
+.painel-link {
+  display: block;
+  margin-bottom: 18px;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, #FFC629);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #F33E33;
+  border-radius: 20px;
+  box-shadow: 0 5px 0 #E67628;
+}
+
+.painel-rapido a:hover,
+.painel-link:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #FF7C2C);
+}
+
+/* ===== RODAPÉ ===== */
+.menu-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-image: url('/images/rodape.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.footer-btn {
+  background: #fff;
+  padding: 6px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #F33E33;
+  border: 3px solid #FF7C2C;
+  text-decoration: none;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.15);
+}
+
+/* Responsividade: quebra o layout para coluna em telas pequenas */
+@media (max-width: 980px) {
+  .cadastro-produto-container {
+    flex-direction: column;
+    padding: 24px;
+  }
+  .painel-rapido {
+    width: 100%;
+    order: 2;
+  }
+  .form-produto {
+    order: 1;
+  }
+  .linha {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .linha label {
+    min-width: 0;
+    margin-bottom: 6px;
+  }
+  form.form-produto .linha input,
+  form.form-produto .linha select {
+    max-width: 100%;
+  }
+}
+
+/* pequena higiene: garante que inputs do form-produto não recebam regras globais indesejadas */
+form.form-produto input,
+form.form-produto select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+

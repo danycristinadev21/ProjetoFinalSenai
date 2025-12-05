@@ -16,7 +16,7 @@
 }
 
 .card-login {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255,255,255,0.5);
   border-radius: 15px;
   padding: 40px 35px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -29,12 +29,14 @@
   color: var(--vermelho);
   margin-bottom: 25px;
   text-shadow: 1px 1px var(--amarelo);
+  letter-spacing: 2px;
+  font-size: 34px;
 }
 
 .card-login label {
   display: block;
   text-align: left;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--laranja);
   margin-top: 10px;
 }
@@ -54,7 +56,9 @@
   background: linear-gradient(90deg, var(--laranja), var(--vermelho));
   border: none;
   color: white;
+  font-size: 16px;
   font-weight: bold;
+  letter-spacing: 2px;
   padding: 12px;
   border-radius: 10px;
   margin-top: 20px;
