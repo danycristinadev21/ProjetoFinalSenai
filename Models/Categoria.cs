@@ -9,11 +9,11 @@ namespace PapelArt.Models
     {
         [Key]
         [Column("id")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Column("nome")]
-        public string nome { get; set; } = string.Empty;
+        public string Nome { get; set; } = string.Empty;
 
         // CATEGORIA PAI (se for subcategoria)
         [Column("categoria_pai_id")]
@@ -26,7 +26,7 @@ namespace PapelArt.Models
         public ICollection<Categoria>? SubCategorias { get; set; }
 
         // Produtos ligados a essa categoria
-        public ICollection<Produto>? produtos { get; set; }
+        public ICollection<Produto>? Produtos { get; set; }
     }
 }
 

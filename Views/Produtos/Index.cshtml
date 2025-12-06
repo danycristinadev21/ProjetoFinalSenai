@@ -1,44 +1,140 @@
 @model IEnumerable<PapelArt.Models.Produto>
+
 @{
     ViewData["Title"] = "Lista de Produtos";
+    Layout = null;
 }
-@if (TempData["MensagemSucesso"] != null)
-{
-    <div class="alert alert-success text-center">
-        @TempData["MensagemSucesso"]
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Produtos - PapelArt</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <div style="container-titulo">
+        <h1 class="cadastro-titulo">LISTA DE PRODUTOS</h1>
     </div>
-}
-<h2 class="text-center mb-4">Lista de Produtos</h2>
 
-<div class="text-end mb-3">
-    <a asp-action="Create" class="btn btn-success">Novo Produto</a>
-</div>
 
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Preço</th>
-            <th>Quantidade</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Nome</td>
-                <td>@item.Categoria?.nome</td>
-                <td>@item.Preco.ToString("C")</td>
-                <td>@item.Quantidade</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalhes</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
 
+
+    <div class="container-centered">
+        <div class="cadastro-listaprod-container">
+
+
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Código</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Subcategoria</th>
+                        <th>Valor Unitário (R$)</th>
+                        <th>Quantidade</th>
+                        <th>Valor Total (R$)</th>
+                        <th style="width: 180px;">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <!-- CÓDIGO -->
+                            <td>@item.Id</td>
+
+                            <!-- NOME DO PRODUTO -->
+                            <td>@item.Nome</td>
+
+                            <!-- CATEGORIA PRINCIPAL (PAI) -->
+                            <td>
+                                @{
+                                    var categoriaPai = item.Categoria?.CategoriaPai?.Nome;
+                                }
+
+                                @(string.IsNullOrEmpty(categoriaPai) ? "-" : categoriaPai)
+                            </td>
+
+                            <!-- SUBCATEGORIA -->
+                            <td>
+                                @(item.Categoria != null ? item.Categoria.Nome : "-")
+                            </td>
+
+                            <!-- VALOR UNITÁRIO -->
+                            <td>
+                                @item.Preco.ToString("N2")
+                            </td>
+
+                            <!-- QUANTIDADE -->
+                            <td>
+                                @item.Quantidade
+                            </td>
+
+                            <!-- VALOR TOTAL -->
+                            <td>
+                                @{
+                                    decimal total = item.Preco * item.Quantidade;
+                                }
+                                @total.ToString("N2")
+                            </td>
+
+                            <!-- AÇÕES -->
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn-lista-produto">Editar</a> <a
+                                    asp-action="Details" asp-route-id="@item.Id" class="btn-lista-produto">Detalhes</a> <a
+                                    asp-action="Delete" asp-route-id="@item.Id" class="btn-lista-produto">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <div>
+            <a asp-action="Create" class="btn-novo-produto" type="submit">CADASTRAR NOVO PRODUTO</a>
+        </div>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="menu-footer">
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
+
+</body>
+
+</html>

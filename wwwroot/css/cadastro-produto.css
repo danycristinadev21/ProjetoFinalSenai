@@ -21,6 +21,7 @@ body {
   margin: 0;
 }
 
+
 /* wrapper que existe no HTML (garante espaço extra) */
 .container-centered {
   width: 1300px;
@@ -30,6 +31,13 @@ body {
   padding-bottom: 30px; /* garante que conteúdo não fique por baixo do footer */
   box-sizing: border-box;
 }
+
+.container-detalhes-produto {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-bottom: 0px;
+}
+
 
 /* ===== TÍTULO ===== */
 .cadastro-titulo {
@@ -60,6 +68,56 @@ body {
   backdrop-filter: blur(3px);
   box-sizing: border-box;
 }
+
+.edit-produto-container {
+  width: 900px;
+  margin: 0 auto 24px auto;
+  padding: 40px 50px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  background: rgba(255, 220, 180, 0.5);
+  border-radius: 28px;
+  border: 3px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(3px);
+  box-sizing: border-box;
+}
+
+
+.cadastro-listaprod-container {
+  width: 1300px;
+  margin: 0 auto 15px auto;
+  padding: 40px 40px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: rgba(255, 220, 180, 0.5);
+  border-radius: 28px;
+  border: 3px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(3px);
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.btn-lista-produto {
+  padding: 3px 6px;
+  background: linear-gradient(180deg, #FFC629);
+  color: #fff;
+  font-weight: 400;
+  font-size: 12px;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #F33E33;
+  border-radius: 5px;
+  box-shadow: 0 5px 0 #E67628;
+}
+
+.btn-lista-produto {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #FF7C2C);
+}
+
+
 
 /* ===== FORM ===== */
 .form-produto {
@@ -138,6 +196,27 @@ form.form-produto select {
 }
 
 .btn-cadastrar-produto:hover {
+  transform: translateY(-2px);
+}
+
+.btn-novo-produto {
+  display: block;
+  margin: 40px auto 0 auto;
+  padding: 10px 90px;
+   text-align: center;
+  background: linear-gradient(180deg, #FF7C2C, #F33E33);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #E1542A;
+  transition: transform 0.15s ease;
+}
+
+.btn-novo-produto:hover {
   transform: translateY(-2px);
 }
 
@@ -248,6 +327,68 @@ form.form-produto select {
   box-sizing: border-box;
 }
 
+/* Cards mais largos e com espaço melhor */
+.produto-detalhes-card {
+    background: rgba(255, 240, 210, 0.50);
+    padding: 35px;  /* aumentei */
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px; /* aumentei também */
+    margin-top: 20px;
+    width: 1000px;
+    align-items: center;
+}
 
+.grupo-detalhes {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 15px;
+    background: rgba(255, 198, 41, 0.5);
+    border-radius: 12px;
+    border-left: 5px solid #FF7C2C;
+}
+
+.grupo-detalhes.full {
+    grid-column: span 2;
+}
+
+.grupo-detalhes.destaque {
+    background: rgba(255, 198, 41, 0.8);
+    border-left: 5px solid #F33E33;
+}
+
+.detalhe-label {
+    font-size: 0.85rem;
+    color: #F33E33;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.detalhe-valor {
+    font-size: 1.1rem;
+    color: #222;
+    font-weight: 500;
+}
+
+
+.linha-botoes-horizontal {
+    margin-top: 0px;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Se quiser dar uma leve diferença no botão voltar */
+.btn-secundario {
+    background-color: #555;
+}
+
+.btn-secundario:hover {
+    background-color: #333;
+}
 
 

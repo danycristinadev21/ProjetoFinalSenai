@@ -1,6 +1,7 @@
 using PapelArt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PapelArt.Controllers
 {
@@ -14,14 +15,18 @@ namespace PapelArt.Controllers
         }
 
         // GET: Produtos
-        public IActionResult Index()
-        {
-            var produtos = _context.Produtos
-                .Include(p => p.Categoria)
-                .ToList();
+        // Ex.: Index action
+public IActionResult Index()
+{
+    // Carrega produtos com categoria e a categoria pai (se existir)
+    var produtos = _context.Produtos
+        .Include(p => p.Categoria)
+            .ThenInclude(c => c.CategoriaPai)   // garante CategoriaPai carregada
+        .ToList();
 
-            return View(produtos);
-        }
+    return View(produtos);
+}
+
 
         // GET: Produtos/Create
         public IActionResult Create()
@@ -29,7 +34,7 @@ namespace PapelArt.Controllers
             var categorias = _context.Categorias
                 .Include(c => c.SubCategorias)
                 .Where(c => c.CategoriaPaiId == null)
-                .OrderBy(c => c.nome)
+                .OrderBy(c => c.Nome)
                 .ToList();
 
             ViewBag.Categorias = categorias;
@@ -47,29 +52,44 @@ public async Task<IActionResult> Create(Produto produto)
     {
         _context.Produtos.Add(produto);
         await _context.SaveChangesAsync();
+
+        TempData["MensagemSucesso"] = "Produto cadastrado com sucesso!";
         return RedirectToAction(nameof(Index));
     }
 
+    ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nome");
+    return View(produto);
+}
+
+
+
+        // GET: Produtos/Edit/5
+        public IActionResult Edit(int? id)
+{
+    if (id == null)
+        return NotFound();
+
+    var produto = _context.Produtos
+        .Include(p => p.Categoria)
+        .FirstOrDefault(p => p.Id == id);
+
+    if (produto == null)
+        return NotFound();
+
     ViewBag.Categorias = _context.Categorias
-        .Include(c => c.SubCategorias)
-        .Where(c => c.CategoriaPaiId == null)
+        .OrderBy(c => c.Nome)
+        .Select(c => new SelectListItem
+        {
+            Value = c.Id.ToString(),
+            Text = c.CategoriaPai != null 
+                   ? c.CategoriaPai.Nome + " → " + c.Nome
+                   : c.Nome
+        })
         .ToList();
 
     return View(produto);
 }
 
-
-        // GET: Produtos/Edit/5
-        public IActionResult Edit(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var produto = _context.Produtos.Find(id);
-            if (produto == null) return NotFound();
-
-            ViewBag.Categorias = _context.Categorias.ToList();
-            return View(produto);
-        }
 
         // POST: Produtos/Edit/5
         [HttpPost]
@@ -85,7 +105,7 @@ public async Task<IActionResult> Create(Produto produto)
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Categorias = _context.Categorias.ToList();
+            ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nome");
             return View(produto);
         }
 

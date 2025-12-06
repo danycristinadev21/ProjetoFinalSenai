@@ -1,46 +1,133 @@
 @model PapelArt.Models.Produto
+
 @{
     ViewData["Title"] = "Editar Produto";
+    Layout = null;
 }
 
-<h2 class="text-center mb-4">Editar Produto</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<form asp-action="Edit" method="post" class="w-50 mx-auto">
-    <input type="hidden" asp-for="Id" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
 
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
-    <div class="form-group mb-3">
-        <label asp-for="Nome" class="form-label">Nome</label>
-        <input asp-for="Nome" class="form-control" />
-        <span asp-validation-for="Nome" class="text-danger"></span>
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
+
+<body class="bg-sistema">
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="container-titulo">
+        <h1 class="cadastro-titulo">EDITAR PRODUTO</h1>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Descricao" class="form-label">Descrição</label>
-        <textarea asp-for="Descricao" class="form-control"></textarea>
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container-centered">
+        <div class="cadastro-produto-container">
+
+            <!-- FORMULÁRIO -->
+            <form asp-action="Edit" method="post" class="form-produto form-area">
+
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-2"></div>
+
+                <!-- NOME + QUANTIDADE -->
+                <div class="linha">
+                    <label>PRODUTO:</label>
+                    <input asp-for="Nome" type="text" required />
+
+                    <label>QUANTIDADE:</label>
+                    <input asp-for="Quantidade" type="number" oninput="calculateTotal()" required />
+                </div>
+
+                <!-- DESCRIÇÃO -->
+                <div class="linha">
+                    <label>DESCRIÇÃO:</label>
+                    <input asp-for="Descricao" type="text" />
+                </div>
+
+                <!-- PREÇO UNITÁRIO + TOTAL -->
+                <div class="linha">
+                    <label>VALOR UNITÁRIO (R$):</label>
+                    <input asp-for="Preco" type="number" step="0.01" id="Preco" oninput="calculateTotal()" required />
+
+                    <label>VALOR TOTAL (R$):</label>
+                    <input type="text" id="valorTotal" disabled />
+                </div>
+
+                <!-- CATEGORIA -->
+                <div class="linha">
+                    <label>CATEGORIA:</label>
+
+                    <select asp-for="CategoriaId" asp-items="ViewBag.Categorias" required>
+                        <option value="">Selecione uma categoria...</option>
+                    </select>
+                </div>
+
+                <!-- BOTÕES -->
+                <div class="linha linha-botoes">
+                    <button type="submit" class="btn-cadastrar-produto">
+                        SALVAR ALTERAÇÕES
+                    </button>
+                </div>
+
+                <div class="linha linha-botoes">
+                    <button type="javascript:history.back()" class="btn-cadastrar-produto">
+                        CANCELAR
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Preco" class="form-label">Preço</label>
-        <input asp-for="Preco" class="form-control" type="number" step="0.01" />
-    </div>
+    <!-- RODAPÉ FIXO -->
+    <footer class="menu-footer">
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
 
-    <div class="form-group mb-3">
-        <label asp-for="Quantidade" class="form-label">Quantidade</label>
-        <input asp-for="Quantidade" class="form-control" type="number" />
-    </div>
+    <script>
+        function calculateTotal() {
+            const preco = parseFloat(document.getElementById("Preco").value) || 0;
+            const quantidade = parseInt(document.getElementById("Quantidade").value) || 0;
+            document.getElementById("valorTotal").value = (preco * quantidade).toFixed(2);
+        }
 
-    <div class="form-group mb-3">
-        <label asp-for="CategoriaId" class="form-label">Categoria</label>
-        <select asp-for="CategoriaId" class="form-select" asp-items="@(new SelectList(ViewBag.Categorias, "id", "nome"))"></select>
-    </div>
+        // Calcula quando abrir a tela também
+        window.onload = calculateTotal;
+    </script>
 
-    <button type="submit" class="btn btn-primary">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-</form>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</body>
 
+</html>

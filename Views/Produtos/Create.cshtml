@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Cadastrar Produto";
-    Layout = null; 
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,11 +36,11 @@
         </div>
     </header>
 
-  <div style="container-titulo">
-      <h1 class="cadastro-titulo">CADASTRAR PRODUTO</h1>
-  </div>
+    <div style="container-titulo">
+        <h1 class="cadastro-titulo">CADASTRAR PRODUTO</h1>
+    </div>
 
-  
+
     <!-- CONTAINER PRINCIPAL -->
     <div class="container-centered">
         <div class="cadastro-produto-container">
@@ -48,63 +49,63 @@
             <!-- FORMULÁRIO -->
             <form method="post" class="form-produto form-area">
 
-                <!-- CÓDIGO + NOME -->
+                <!-- CÓDIGO + QUANTIDADE -->
                 <div class="linha">
                     <label>CÓDIGO:</label>
                     <input type="text" value="Gerado automaticamente" disabled />
 
                     <label>QUANTIDADE:</label>
-                    <input type="number" id="quantidade" oninput="calculateTotal()" />
+                    <input type="number" asp-for="Quantidade" oninput="calculateTotal()" class="form-control" />
+                </div>
 
+                <!-- NOME -->
+                <div class="linha">
+                    <label>NOME:</label>
+                    <input type="text" asp-for="Nome" class="form-control" required />
                 </div>
 
                 <!-- DESCRIÇÃO -->
                 <div class="linha">
-                    <label>NOME:</label>
-                    <input type="text" name="nome" required />
+                    <label>DESCRIÇÃO:</label>
+                    <input type="text" asp-for="Descricao" class="form-control" />
                 </div>
 
-                <!-- VALOR UNITÁRIO -->
-                <div class="linha">
-                     <label>DESCRIÇÃO:</label>
-                    <input type="text" name="descricao" />
-                </div>
-
-                <!-- QTDE + TOTAL -->
+                <!-- VALOR UNITÁRIO + TOTAL -->
                 <div class="linha">
                     <label>VALOR UNITÁRIO:</label>
-                    <input type="number" step="0.01" id="preco" oninput="calculateTotal()" />
+                    <input type="number" step="0.01" asp-for="Preco" oninput="calculateTotal()" class="form-control" />
 
                     <label>VALOR TOTAL:</label>
-                    <input type="text" id="valorTotal" disabled />
+                    <input type="text" id="valorTotal" class="form-control" disabled />
                 </div>
+
 
                 <!-- CATEGORIA -->
                 <div class="linha">
-    <label>CATEGORIA:</label>
+                    <label>CATEGORIA:</label>
 
-    <select asp-for="CategoriaId" class="form-control">
-    <option value="">Selecione...</option>
+                    <select asp-for="CategoriaId" class="form-control">
+                        <option value="">Selecione...</option>
 
-    @foreach (var categoria in ViewBag.Categorias as List<PapelArt.Models.Categoria>)
-    {
-        <option value="@categoria.id">@categoria.nome</option>
+                        @foreach (var categoria in ViewBag.Categorias as List<PapelArt.Models.Categoria>)
+                        {
+                            <option value="@categoria.Id">@categoria.Nome</option>
 
-        if (categoria.SubCategorias != null)
-        {
-            foreach (var sub in categoria.SubCategorias)
-            {
-                <option value="@sub.id">
-                    &nbsp;&nbsp;↳ @sub.nome
-                </option>
-            }
-        }
-    }
-</select>
+                            if (categoria.SubCategorias != null)
+                            {
+                                foreach (var sub in categoria.SubCategorias)
+                                {
+                                    <option value="@sub.Id">
+                                        &nbsp;&nbsp;↳ @sub.Nome
+                                    </option>
+                                }
+                            }
+                        }
+                    </select>
 
-<span asp-validation-for="CategoriaId" class="text-danger"></span>
+                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
 
-</div>
+                </div>
 
 
                 <!-- BOTÃO -->
@@ -138,12 +139,14 @@
     <!-- SCRIPT DE CÁLCULO -->
     <script>
         function calculateTotal() {
-            const preco = parseFloat(document.getElementById('preco').value) || 0;
-            const quantidade = parseFloat(document.getElementById('quantidade').value) || 0;
-            document.getElementById('valorTotal').value = (preco * quantidade).toFixed(2);
+            const preco = parseFloat(document.getElementById("Preco").value) || 0;
+            const quantidade = parseInt(document.getElementById("Quantidade").value) || 0;
+
+            const total = preco * quantidade;
+            document.getElementById("valorTotal").value = total.toFixed(2);
         }
     </script>
 
 </body>
-</html>
 
+</html>

@@ -55,21 +55,21 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.id</td>
+                            <td>@item.Id</td>
                             <td>
                                 @if (item.CategoriaPaiId != null)
                                 {
                                     <span style="padding-left:45px;">
-                                        ↳ @item.nome
+                                        ↳ @item.Nome
                                     </span>
                                 }
                                 else
                                 {
-                                    <strong>@item.nome</strong>
+                                    <strong>@item.Nome</strong>
                                 }
                             </td>
                             <td>
-                                @(item.CategoriaPai != null ? item.CategoriaPai.nome : "-")
+                                @(item.CategoriaPai != null ? item.CategoriaPai.Nome : "-")
                             </td>
                         </tr>
                     }

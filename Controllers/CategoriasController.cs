@@ -34,7 +34,7 @@ public IActionResult Create()
     // força execução da query agora com ToList() para uso seguro no SelectList
     var categoriasPai = _context.Categorias
         .Where(c => c.CategoriaPaiId == null)
-        .OrderBy(c => c.nome)
+        .OrderBy(c => c.Nome)
         .ToList();
 
     ViewBag.CategoriasPai = new SelectList(categoriasPai, "Id", "Nome");
@@ -60,7 +60,7 @@ public async Task<IActionResult> Create([Bind("Nome,CategoriaPaiId")] Categoria 
     // Se houver erro, recarrega o select mantendo a seleção anterior
     var categoriasPai = _context.Categorias
         .Where(c => c.CategoriaPaiId == null)
-        .OrderBy(c => c.nome)
+        .OrderBy(c => c.Nome)
         .ToList();
 
     ViewBag.CategoriasPai = new SelectList(categoriasPai, "Id", "Nome", categoria.CategoriaPaiId);
