@@ -39,12 +39,12 @@ namespace PapelArt.Controllers
             // Criptografar a senha antes de comparar
             string senhaCriptografada = GerarHash(senha);
 
-            var usuario = await _context.usuarios
-                .FirstOrDefaultAsync(u => u.email == email && u.senha == senhaCriptografada);
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Email == email && u.Senha == senhaCriptografada);
 
             if (usuario != null)
             {
-                TempData["Success"] = $"Bem-vindo(a), {usuario.nome}!";
+                TempData["Success"] = $"Bem-vindo(a), {usuario.Nome}!";
                 return RedirectToAction("Menu", "Home");
             }
 
@@ -62,9 +62,9 @@ namespace PapelArt.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Cadastrar(usuarios usuario)
+        public async Task<IActionResult> Cadastrar(Usuario usuario)
         {
-            Console.WriteLine($"[DEBUG] Tentando cadastrar usuário: {usuario.email}");
+            Console.WriteLine($"[DEBUG] Tentando cadastrar usuário: {usuario.Email}");
 
             if (!ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace PapelArt.Controllers
                 return View("Cadastro", usuario);
             }
 
-            bool existeEmail = await _context.usuarios.AnyAsync(u => u.email == usuario.email);
+            bool existeEmail = await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
             if (existeEmail)
             {
                 TempData["Error"] = "Este e-mail já está cadastrado.";
@@ -80,8 +80,8 @@ namespace PapelArt.Controllers
             }
 
             // Criptografar senha antes de salvar
-            usuario.senha = GerarHash(usuario.senha);
-            usuario.nivel_acesso = "usuario";
+            usuario.Senha = GerarHash(usuario.Senha);
+            usuario.NivelAcesso = "usuario";
 
             _context.Add(usuario);
             await _context.SaveChangesAsync();

@@ -1,4 +1,4 @@
-@model IEnumerable<PapelArt.Models.produtos>
+@model IEnumerable<PapelArt.Models.Produto>
 @{
     ViewData["Title"] = "Lista de Produtos";
 }
@@ -28,14 +28,14 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.nome</td>
-                <td>@item.categoria?.nome</td>
-                <td>@item.preco.ToString("C")</td>
-                <td>@item.quantidade</td>
+                <td>@item.Nome</td>
+                <td>@item.Categoria?.nome</td>
+                <td>@item.Preco.ToString("C")</td>
+                <td>@item.Quantidade</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.id" class="btn btn-sm btn-info">Detalhes</a>
-                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger">Excluir</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
                 </td>
             </tr>
         }

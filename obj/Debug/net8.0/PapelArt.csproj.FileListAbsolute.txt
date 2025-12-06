@@ -495,9 +495,6 @@ C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.MvcApplicationPartsAssemblyInfo.c
 C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.RazorAssemblyInfo.cache
 C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.RazorAssemblyInfo.cs
 C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.sourcelink.json
-C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\bundle\PapelArt.styles.css
-C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\projectbundle\PapelArt.bundle.scp.css
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets.build.json
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets.development.json
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets\msbuild.PapelArt.Microsoft.AspNetCore.StaticWebAssets.props
@@ -505,6 +502,9 @@ C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets\msbuild.build.PapelArt.pro
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.PapelArt.props
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.PapelArt.props
 C:\ProjetoFinalSenai\obj\Debug\net8.0\staticwebassets.pack.json
+C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\bundle\PapelArt.styles.css
+C:\ProjetoFinalSenai\obj\Debug\net8.0\scopedcss\projectbundle\PapelArt.bundle.scp.css
 C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.csproj.Up2Date
 C:\ProjetoFinalSenai\obj\Debug\net8.0\PapelArt.dll
 C:\ProjetoFinalSenai\obj\Debug\net8.0\refint\PapelArt.dll

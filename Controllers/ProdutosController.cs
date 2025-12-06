@@ -1,6 +1,6 @@
+using PapelArt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PapelArt.Models;
 
 namespace PapelArt.Controllers
 {
@@ -13,55 +13,49 @@ namespace PapelArt.Controllers
             _context = context;
         }
 
-        // GET: Produtos (listar todos)
+        // GET: Produtos
         public IActionResult Index()
         {
-            var produtos = _context.produtos
-                .Include(p => p.categoria)
+            var produtos = _context.Produtos
+                .Include(p => p.Categoria)
                 .ToList();
+
             return View(produtos);
         }
 
         // GET: Produtos/Create
-public IActionResult Create()
-{
-    ViewBag.Categorias = _context.categorias.ToList();
-    return View();
-}
-
-// POST: Produtos/Create
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Create(produtos produto)
-{
-    Console.WriteLine("[DEBUG] Valor recebido: " + produto.nome);
-
-    if (!ModelState.IsValid)
-    {
-        Console.WriteLine("[DEBUG] ModelState inválido!");
-        foreach (var erro in ModelState)
+        public IActionResult Create()
         {
-            if (erro.Value.Errors.Count > 0)
-                Console.WriteLine($"[ERRO] Campo: {erro.Key} -> {erro.Value.Errors[0].ErrorMessage}");
+            var categorias = _context.Categorias
+                .Include(c => c.SubCategorias)
+                .Where(c => c.CategoriaPaiId == null)
+                .OrderBy(c => c.nome)
+                .ToList();
+
+            ViewBag.Categorias = categorias;
+
+            return View();
         }
 
-        ViewBag.Categorias = _context.categorias.ToList();
-        return View(produto);
-    }
 
-    try
+        // POST: Produtos/Create
+        [HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Create(Produto produto)
+{
+    if (ModelState.IsValid)
     {
-        _context.Add(produto);
+        _context.Produtos.Add(produto);
         await _context.SaveChangesAsync();
-        TempData["MensagemSucesso"] = "Produto cadastrado com sucesso!";
         return RedirectToAction(nameof(Index));
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[ERRO] Falha ao salvar produto: " + ex.Message);
-        ViewBag.Categorias = _context.categorias.ToList();
-        return View(produto);
-    }
+
+    ViewBag.Categorias = _context.Categorias
+        .Include(c => c.SubCategorias)
+        .Where(c => c.CategoriaPaiId == null)
+        .ToList();
+
+    return View(produto);
 }
 
 
@@ -70,19 +64,19 @@ public async Task<IActionResult> Create(produtos produto)
         {
             if (id == null) return NotFound();
 
-            var produto = _context.produtos.Find(id);
+            var produto = _context.Produtos.Find(id);
             if (produto == null) return NotFound();
 
-            ViewBag.Categorias = _context.categorias.ToList();
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View(produto);
         }
 
         // POST: Produtos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, produtos produto)
+        public IActionResult Edit(int id, Produto produto)
         {
-            if (id != produto.id) return NotFound();
+            if (id != produto.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
@@ -91,7 +85,7 @@ public async Task<IActionResult> Create(produtos produto)
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Categorias = _context.categorias.ToList();
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View(produto);
         }
 
@@ -100,26 +94,28 @@ public async Task<IActionResult> Create(produtos produto)
         {
             if (id == null) return NotFound();
 
-            var produto = _context.produtos
-                .Include(p => p.categoria)
-                .FirstOrDefault(p => p.id == id);
+            var produto = _context.Produtos
+                .Include(p => p.Categoria)
+                .FirstOrDefault(p => p.Id == id);
 
             if (produto == null) return NotFound();
 
             return View(produto);
         }
 
-        // POST: Produtos/Delete/5 (confirma exclusão)
+        // POST: Produtos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var produto = _context.produtos.Find(id);
+            var produto = _context.Produtos.Find(id);
+
             if (produto != null)
             {
-                _context.produtos.Remove(produto);
+                _context.Produtos.Remove(produto);
                 _context.SaveChanges();
             }
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -128,9 +124,9 @@ public async Task<IActionResult> Create(produtos produto)
         {
             if (id == null) return NotFound();
 
-            var produto = _context.produtos
-                .Include(p => p.categoria)
-                .FirstOrDefault(p => p.id == id);
+            var produto = _context.Produtos
+                .Include(p => p.Categoria)
+                .FirstOrDefault(p => p.Id == id);
 
             if (produto == null) return NotFound();
 
@@ -138,4 +134,5 @@ public async Task<IActionResult> Create(produtos produto)
         }
     }
 }
+
 

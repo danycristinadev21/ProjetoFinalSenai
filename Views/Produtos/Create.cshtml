@@ -1,3 +1,5 @@
+@model PapelArt.Models.Produto
+
 @{
     ViewData["Title"] = "Cadastrar Produto";
     Layout = null; 
@@ -79,14 +81,31 @@
 
                 <!-- CATEGORIA -->
                 <div class="linha">
-                    <label>CATEGORIA:</label>
-                    <select name="categoria">
-                        <option>Selecione...</option>
-                        <option>Papelaria</option>
-                        <option>Informática</option>
-                        <option>Decoração</option>
-                    </select>
-                </div>
+    <label>CATEGORIA:</label>
+
+    <select asp-for="CategoriaId" class="form-control">
+    <option value="">Selecione...</option>
+
+    @foreach (var categoria in ViewBag.Categorias as List<PapelArt.Models.Categoria>)
+    {
+        <option value="@categoria.id">@categoria.nome</option>
+
+        if (categoria.SubCategorias != null)
+        {
+            foreach (var sub in categoria.SubCategorias)
+            {
+                <option value="@sub.id">
+                    &nbsp;&nbsp;↳ @sub.nome
+                </option>
+            }
+        }
+    }
+</select>
+
+<span asp-validation-for="CategoriaId" class="text-danger"></span>
+
+</div>
+
 
                 <!-- BOTÃO -->
                 <button class="btn-cadastrar-produto" type="submit">CADASTRAR</button>
@@ -111,7 +130,7 @@
 
     <!-- RODAPÉ Fixo -->
     <footer class="menu-footer">
-        <a href="/Home/Menu" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
         <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
     </footer>
 

@@ -1,4 +1,4 @@
-@model PapelArt.Models.produtos
+@model PapelArt.Models.Produto
 @{
     ViewData["Title"] = "Detalhes do Produto";
 }
@@ -8,22 +8,22 @@
 <div class="w-50 mx-auto">
     <dl class="row">
         <dt class="col-sm-3">Nome</dt>
-        <dd class="col-sm-9">@Model.nome</dd>
+        <dd class="col-sm-9">@Model.Nome</dd>
 
         <dt class="col-sm-3">Descrição</dt>
-        <dd class="col-sm-9">@Model.descricao</dd>
+        <dd class="col-sm-9">@Model.Descricao</dd>
 
         <dt class="col-sm-3">Preço</dt>
-        <dd class="col-sm-9">@Model.preco.ToString("C")</dd>
+        <dd class="col-sm-9">@Model.Preco.ToString("C")</dd>
 
         <dt class="col-sm-3">Quantidade</dt>
-        <dd class="col-sm-9">@Model.quantidade</dd>
+        <dd class="col-sm-9">@Model.Quantidade</dd>
 
         <dt class="col-sm-3">Categoria</dt>
-        <dd class="col-sm-9">@Model.categoria?.nome</dd>
+        <dd class="col-sm-9">@Model.Categoria?.nome</dd>
     </dl>
 
-    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-warning">Editar</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
     <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>
 

@@ -8,23 +8,26 @@ using PapelArt.Models; // Garante acesso às suas classes de modelo
 namespace PapelArt.Data
 {
     // A classe do contexto deve herdar de DbContext
-    public class ApplicationDbContext : DbContext
+     public class ApplicationDbContext : DbContext
     {
-        // Construtor: Essencial para a injeção de dependência na inicialização do app
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        // DbSets: Representam as tabelas do seu banco de dados
-        // Você deve ter um DbSet para cada tabela/modelo
-        
-        public DbSet<categorias> categorias { get; set; }
-        public DbSet<produtos> produtos { get; set; }
-        public DbSet<movimentacoes> movimentacoes { get; set; }
-        public DbSet<usuarios> usuarios { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Movimentacao> Movimentacoes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Produto>().ToTable("produtos");
+            modelBuilder.Entity<Categoria>().ToTable("categorias");
+            modelBuilder.Entity<Movimentacao>().ToTable("movimentacoes");
+            modelBuilder.Entity<Usuario>().ToTable("usuarios");
 
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -1,4 +1,4 @@
-@model PapelArt.Models.produtos
+@model PapelArt.Models.Produto
 @{
     ViewData["Title"] = "Excluir Produto";
 }
@@ -10,17 +10,17 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-3">Nome</dt>
-        <dd class="col-sm-9">@Model.nome</dd>
+        <dd class="col-sm-9">@Model.Nome</dd>
 
         <dt class="col-sm-3">Categoria</dt>
-        <dd class="col-sm-9">@Model.categoria?.nome</dd>
+        <dd class="col-sm-9">@Model.Categoria?.nome</dd>
 
         <dt class="col-sm-3">Preço</dt>
-        <dd class="col-sm-9">@Model.preco.ToString("C")</dd>
+        <dd class="col-sm-9">@Model.Preco.ToString("C")</dd>
     </dl>
 
     <form asp-action="DeleteConfirmed" method="post">
-        <input type="hidden" asp-for="id" />
+        <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn btn-danger">Excluir</button>
         <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
     </form>

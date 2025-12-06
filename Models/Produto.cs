@@ -1,45 +1,44 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PapelArt.Models
 {
     [Table("produtos")] // nome da tabela no banco
-    public class produtos
+    public class Produto
     {
         [Key]
         [Column("id")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "O nome do produto é obrigatório.")]
         [Column("nome")]
-        public string nome { get; set; } = string.Empty;
+        public string Nome { get; set; } = string.Empty;
 
         [Column("descricao")]
-        public string? descricao { get; set; }
+        public string? Descricao { get; set; }
 
         [Required(ErrorMessage = "O preço é obrigatório.")]
         [Column("preco")]
         [DataType(DataType.Currency)]
-        public decimal preco { get; set; }
+        public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "A quantidade é obrigatória.")]
         [Column("quantidade")]
-        public int quantidade { get; set; }
+        public int Quantidade { get; set; }
 
         [Column("estoque_minimo")]
-        public int estoque_minimo { get; set; }
+        public int EstoqueMinimo { get; set; }
 
         [Column("estoque_maximo")]
-        public int estoque_maximo { get; set; }
+        public int EstoqueMaximo { get; set; }
 
         // FK obrigatória para categoria
         [Required(ErrorMessage = "Selecione uma categoria.")]
         [Column("id_categoria")]
         [ForeignKey("categoria")]
-        public int id_categoria { get; set; }
+        public int CategoriaId { get; set; }
 
-        public categorias? categoria { get; set; }
+        public Categoria? Categoria { get; set; }
     }
 }
 

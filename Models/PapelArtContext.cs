@@ -10,20 +10,23 @@ namespace PapelArt.Models
         {
         }
 
-        
-        public DbSet<produtos> produtos { get; set; }
-        public DbSet<categorias> categorias { get; set; }
-        public DbSet<movimentacoes> movimentacoes { get; set; }
-        public DbSet<usuarios> usuarios { get; set; }
+        // DbSets CORRETOS (singular / PascalCase)
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Movimentacao> Movimentacoes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Define os nomes exatos das tabelas e colunas no banco
-            modelBuilder.Entity<produtos>().ToTable("produtos");
-            modelBuilder.Entity<categorias>().ToTable("categorias");
-            modelBuilder.Entity<movimentacoes>().ToTable("movimentacoes");
-            modelBuilder.Entity<usuarios>().ToTable("usuarios");
+            // Mapeia para os nomes reais das tabelas do banco (minúsculo / plural)
+            modelBuilder.Entity<Produto>().ToTable("produtos");
+            modelBuilder.Entity<Categoria>().ToTable("categorias");
+            modelBuilder.Entity<Movimentacao>().ToTable("movimentacoes");
+            modelBuilder.Entity<Usuario>().ToTable("usuarios");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
+
 

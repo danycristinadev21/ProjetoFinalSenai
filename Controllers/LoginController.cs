@@ -28,14 +28,14 @@ namespace PapelArt.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string email, string senha)
         {
-            var usuario = await _context.usuarios
-                .FirstOrDefaultAsync(u => u.email == email && u.senha == senha);
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
 
             if (usuario != null)
             {
                 // Guarda dados na sessão
-                HttpContext.Session.SetString("UsuarioNome", usuario.nome);
-                HttpContext.Session.SetString("UsuarioNivel", usuario.nivel_acesso);
+                HttpContext.Session.SetString("UsuarioNome", usuario.Nome);
+                HttpContext.Session.SetString("UsuarioNivel", usuario.NivelAcesso);
 
                 // Redireciona para a página inicial
                 return RedirectToAction("Index", "Home");
