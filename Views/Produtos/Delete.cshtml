@@ -1,28 +1,141 @@
 @model PapelArt.Models.Produto
+
 @{
     ViewData["Title"] = "Excluir Produto";
+    Layout = null;
 }
 
-<h2 class="text-center mb-4">Excluir Produto</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<div class="text-center">
-    <h4>Tem certeza que deseja excluir este produto?</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-3">Nome</dt>
-        <dd class="col-sm-9">@Model.Nome</dd>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
 
-        <dt class="col-sm-3">Categoria</dt>
-        <dd class="col-sm-9">@Model.Categoria?.Nome</dd>
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
-        <dt class="col-sm-3">Preço</dt>
-        <dd class="col-sm-9">@Model.Preco.ToString("C")</dd>
-    </dl>
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
 
-    <form asp-action="DeleteConfirmed" method="post">
-        <input type="hidden" asp-for="Id" />
-        <button type="submit" class="btn btn-danger">Excluir</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </form>
+<body class="bg-sistema">
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="container-titulo">
+        <h1 class="cadastro-titulo">EXCLUIR PRODUTO</h1>
+    </div>
+
+<div class="container-titulo">
+    <h2>Tem certeza que deseja excluir este produto?</h2>
 </div>
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container-centered container-detalhes-produto">
+        <div class="cadastro-listaprod-container">
+
+
+<!-- DETALHES -->
+            <div class="produto-detalhes-card">
+
+                <div class="grupo-detalhes">
+                    <span class="detalhe-label">Código</span>
+                    <span class="detalhe-valor">#@Model.Id</span>
+                </div>
+
+                <div class="grupo-detalhes">
+                    <span class="detalhe-label">Categoria</span>
+                    <span class="detalhe-valor">@Model.Categoria?.Nome</span>
+                </div>
+
+                <div class="grupo-detalhes full">
+                    <span class="detalhe-label">Produto</span>
+                    <span class="detalhe-valor">@Model.Nome</span>
+                </div>
+
+                <div class="grupo-detalhes full">
+                    <span class="detalhe-label">Descrição</span>
+                    <span class="detalhe-valor">
+                        @(string.IsNullOrWhiteSpace(Model.Descricao) ? "Sem descrição" : Model.Descricao)
+                    </span>
+                </div>
+
+                <div class="grupo-detalhes">
+                    <span class="detalhe-label">Valor unitário</span>
+                    <span class="detalhe-valor">R$ @Model.Preco.ToString("N2")</span>
+                </div>
+
+                <div class="grupo-detalhes">
+                    <span class="detalhe-label">Quantidade em estoque</span>
+                    <span class="detalhe-valor">@Model.Quantidade</span>
+                </div>
+
+                <div class="grupo-detalhes destaque full">
+                    <span class="detalhe-label">Valor total em estoque</span>
+                    <span class="detalhe-valor">
+                        R$ @((Model.Preco * Model.Quantidade).ToString("N2"))
+                    </span>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<!-- BOTÕES -->
+<div class="linha linha-botoes-horizontal">
+
+    <button type="button"
+            class="btn-cadastrar-produto btn-danger"
+            onclick="document.getElementById('formDelete').submit();">
+        EXCLUIR
+    </button>
+
+    <form asp-action="DeleteConfirmed" method="post" id="formDelete" style="display:none;">
+        <input type="hidden" asp-for="Id" />
+    </form>
+
+    <button type="button"
+            onclick="history.back()"
+            class="btn-cadastrar-produto btn-secundario">
+        CANCELAR
+    </button>
+
+</div>
+
+
+    
+
+
+    <!-- RODAPÉ FIXO -->
+    <footer class="menu-footer">
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
+
+
+
+</body>
+
+</html>
+    
 

@@ -21,6 +21,15 @@ body {
   margin: 0;
 }
 
+h2 {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color: #F33E33;
+  text-shadow: #FF7C2C;
+
+}
+
 
 /* wrapper que existe no HTML (garante espaço extra) */
 .container-centered {
@@ -373,13 +382,30 @@ form.form-produto select {
     font-weight: 500;
 }
 
-
 .linha-botoes-horizontal {
-    margin-top: 0px;
-    gap: 15px;
-    display: flex;
+    display: flex !important;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 0 0 30px 0;
 }
+
+.form-botao {
+    margin: 0;
+}
+
+.form-botao button {
+    display: block;
+}
+
+.btn-danger {
+    background-color: #b71c1c !important;
+}
+
+.btn-danger:hover {
+    background-color: #8e0000 !important;
+}
+
 
 
 /* Se quiser dar uma leve diferença no botão voltar */
