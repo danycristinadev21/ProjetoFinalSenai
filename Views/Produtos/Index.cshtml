@@ -41,7 +41,6 @@
         <h1 class="cadastro-titulo">LISTA DE PRODUTOS</h1>
     </div>
 
-
     @if (TempData["MensagemSucesso"] != null)
     {
         <div class="alert alert-success text-center">
@@ -49,10 +48,8 @@
         </div>
     }
 
-
     <div class="container-centered">
         <div class="cadastro-listaprod-container">
-
 
             <table class="table table-bordered table-hover text-center align-middle">
                 <thead class="table-dark">
@@ -62,9 +59,7 @@
                         <th>Categoria</th>
                         <th>Subcategoria</th>
                         <th>Valor Unitário (R$)</th>
-                        <th>Quantidade</th>
-                        <th>Valor Total (R$)</th>
-                        <th style="width: 180px;">Ações</th>
+                        <th style="width: 150px;">Ações</th>
                     </tr>
                 </thead>
 
@@ -78,12 +73,11 @@
                             <!-- NOME DO PRODUTO -->
                             <td>@item.Nome</td>
 
-                            <!-- CATEGORIA PRINCIPAL (PAI) -->
+                            <!-- CATEGORIA PAI -->
                             <td>
                                 @{
                                     var categoriaPai = item.Categoria?.CategoriaPai?.Nome;
                                 }
-
                                 @(string.IsNullOrEmpty(categoriaPai) ? "-" : categoriaPai)
                             </td>
 
@@ -93,28 +87,12 @@
                             </td>
 
                             <!-- VALOR UNITÁRIO -->
-                            <td>
-                                @item.Preco.ToString("N2")
-                            </td>
-
-                            <!-- QUANTIDADE -->
-                            <td>
-                                @item.Quantidade
-                            </td>
-
-                            <!-- VALOR TOTAL -->
-                            <td>
-                                @{
-                                    decimal total = item.Preco * item.Quantidade;
-                                }
-                                @total.ToString("N2")
-                            </td>
+                            <td>@item.Preco.ToString("N2")</td>
 
                             <!-- AÇÕES -->
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn-lista-produto">Editar</a> <a
-                                    asp-action="Details" asp-route-id="@item.Id" class="btn-lista-produto">Detalhes</a> <a
-                                    asp-action="Delete" asp-route-id="@item.Id" class="btn-lista-produto">Excluir</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn-lista-produto">Detalhes</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn-lista-produto">Excluir</a>
                             </td>
                         </tr>
                     }

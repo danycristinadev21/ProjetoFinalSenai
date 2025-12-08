@@ -40,22 +40,17 @@
         <h1 class="cadastro-titulo">CADASTRAR PRODUTO</h1>
     </div>
 
-
     <!-- CONTAINER PRINCIPAL -->
     <div class="container-centered">
         <div class="cadastro-produto-container">
 
-
             <!-- FORMULÁRIO -->
             <form method="post" class="form-produto form-area">
 
-                <!-- CÓDIGO + QUANTIDADE -->
+                <!-- CÓDIGO (automático) -->
                 <div class="linha">
                     <label>CÓDIGO:</label>
                     <input type="text" value="Gerado automaticamente" disabled />
-
-                    <label>QUANTIDADE:</label>
-                    <input type="number" asp-for="Quantidade" oninput="calculateTotal()" class="form-control" />
                 </div>
 
                 <!-- NOME -->
@@ -70,15 +65,11 @@
                     <input type="text" asp-for="Descricao" class="form-control" />
                 </div>
 
-                <!-- VALOR UNITÁRIO + TOTAL -->
+                <!-- PREÇO -->
                 <div class="linha">
                     <label>VALOR UNITÁRIO:</label>
-                    <input type="number" step="0.01" asp-for="Preco" oninput="calculateTotal()" class="form-control" />
-
-                    <label>VALOR TOTAL:</label>
-                    <input type="text" id="valorTotal" class="form-control" disabled />
+                    <input type="number" step="0.01" asp-for="Preco" class="form-control" required />
                 </div>
-
 
                 <!-- CATEGORIA -->
                 <div class="linha">
@@ -104,9 +95,7 @@
                     </select>
 
                     <span asp-validation-for="CategoriaId" class="text-danger"></span>
-
                 </div>
-
 
                 <!-- BOTÃO -->
                 <button class="btn-cadastrar-produto" type="submit">CADASTRAR</button>
@@ -128,24 +117,11 @@
         </div>
     </div>
 
-
-    <!-- RODAPÉ Fixo -->
+    <!-- RODAPÉ -->
     <footer class="menu-footer">
         <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
         <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
     </footer>
-
-
-    <!-- SCRIPT DE CÁLCULO -->
-    <script>
-        function calculateTotal() {
-            const preco = parseFloat(document.getElementById("Preco").value) || 0;
-            const quantidade = parseInt(document.getElementById("Quantidade").value) || 0;
-
-            const total = preco * quantidade;
-            document.getElementById("valorTotal").value = total.toFixed(2);
-        }
-    </script>
 
 </body>
 
