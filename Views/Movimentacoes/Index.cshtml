@@ -1,0 +1,35 @@
+@model IEnumerable<PapelArt.Models.Movimentacao>
+
+@{
+    ViewData["Title"] = "Movimentações";
+}
+
+<h1>Movimentações de Estoque</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nova Movimentação</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Produto?.Nome</td>
+            <td>@item.Tipo</td>
+            <td>@item.Quantidade</td>
+            <td>@item.DataMovimentacao.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@item.Observacao</td>
+        </tr>
+}
+    </tbody>
+</table>

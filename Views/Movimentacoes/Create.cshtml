@@ -1,0 +1,207 @@
+@model PapelArt.Models.Movimentacao
+
+@{
+    ViewData["Title"] = "Registrar Movimentação";
+    Layout = null;
+}
+
+<style>
+    .conteudo-centralizado {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 220, 180, 0.5);
+        border-radius: 28px;
+        border: 3px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(3px);
+        padding: 40px 40px;
+        margin-bottom: 20px;
+    }
+
+    .observacao-maior {
+        height: 100px;
+        width: 380px;
+        resize: none;
+        border: 2px solid #FF7C2C;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+    }
+</style>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
+
+<body class="Movimentacao">
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <div class="container-titulo">
+        <h1 class="cadastro-titulo">REGISTRAR ENTRADA / SAÍDA</h1>
+    </div>
+
+    <div class="container-centered">
+        <div class="cadastro-listprod-container">
+
+            <form asp-action="Create" method="post" class="form-produto">
+
+
+                <div class="conteudo-centralizado">
+
+                    <!-- PRODUTO -->
+                    <div class="linha">
+                        <label>PRODUTO:</label>
+                        <select asp-for="ProdutoId" asp-items="ViewBag.Produtos" id="ProdutoId">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+
+                    <!-- CÓDIGO -->
+                    <div class="linha">
+                    <label>CÓDIGO:</label>
+                    <input type="text" value="Gerado automaticamente" disabled />
+                    </div>
+
+                    <!-- TIPO -->
+                    <div class="linha">
+                        <label>TIPO DE MOVIMENTAÇÃO:</label>
+                        <select asp-for="Tipo" asp-items="Html.GetEnumSelectList<TipoMovimentacao>()">
+                        </select>
+                    </div>
+
+                    <!-- QUANTIDADE -->
+                    <div class="linha">
+                        <label>QUANTIDADE:</label>
+                        <input asp-for="Quantidade" type="number" id="Quantidade" />
+                    </div>
+
+                    <div class="linha">
+                        <label>VALOR UNITÁRIO:</label>
+                        <input asp-for="ValorUnitario" id="ValorUnitario" type="number" step="0.01" readonly />
+                    </div>
+
+                    <div class="linha">
+                        <label>VALOR TOTAL:</label>
+                        <input asp-for="ValorTotal" id="ValorTotal" type="number" step="0.01" readonly />
+                    </div>
+
+
+
+
+
+                    <!-- OBSERVAÇÃO -->
+                    <div class="linha">
+                        <label>OBSERVAÇÃO:</label>
+                        <textarea asp-for="Observacao" class="observacao-maior">
+            </textarea>
+                    </div>
+
+                </div>
+
+                <div class="linha linha-botoes-horizontal">
+                    <button type="submit" class="btn-principal">REGISTRAR</button>
+                </div>
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+    <footer class="menu-footer">
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
+
+ <!-- coloque isto diretamente antes do fechamento </body> -->
+<script>
+    // Serializa a lista vinda do ViewBag (garanta que ViewBag.ListaProdutos não seja null)
+    const produtos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.ListaProdutos ?? new List<object>()));
+
+    console.log("Produtos carregados:", produtos);
+
+    // Elementos do DOM
+    const selectProduto = document.getElementById("ProdutoId");
+    const inputQuantidade = document.getElementById("Quantidade");
+    const inputValorUnitario = document.getElementById("ValorUnitario");
+    const inputValorTotal = document.getElementById("ValorTotal");
+
+    // Função que atualiza o valor unitário e total a partir do id do produto
+    function atualizarValoresPorProdutoId(produtoId) {
+        if (!produtoId) {
+            inputValorUnitario.value = "";
+            inputValorTotal.value = "";
+            return;
+        }
+
+        // produtoId vindo do select é string — converta para number
+        const idNum = Number(produtoId);
+
+        // Procura usando a propriedade correta (Id maiúsculo)
+        const produtoSelecionado = produtos.find(p => p.Id === idNum);
+
+        if (!produtoSelecionado) {
+            console.warn("Produto não encontrado no array 'produtos' para id:", produtoId);
+            inputValorUnitario.value = "";
+            inputValorTotal.value = "";
+            return;
+        }
+
+        // Propriedade de preço é "Preco" (maiúsculo), conforme sua classe Produto
+        const precoUnitario = parseFloat(produtoSelecionado.Preco || 0);
+
+        inputValorUnitario.value = precoUnitario.toFixed(2);
+
+        // Recalcula total se já houver quantidade
+        const quantidade = parseFloat(inputQuantidade.value || 0);
+        inputValorTotal.value = (precoUnitario * quantidade).toFixed(2);
+    }
+
+    // Evento: quando troca de produto
+    if (selectProduto) {
+        selectProduto.addEventListener("change", function () {
+            atualizarValoresPorProdutoId(this.value);
+        });
+    }
+
+    // Evento: quando muda quantidade (recalcula com o valor unitário atual)
+    if (inputQuantidade) {
+        inputQuantidade.addEventListener("input", function () {
+            const preco = parseFloat(inputValorUnitario.value || 0);
+            const qtd = parseFloat(this.value || 0);
+            inputValorTotal.value = (preco * qtd).toFixed(2);
+        });
+    }
+
+    // Se quiser, você pode forçar uma atualização inicial caso já exista um produto selecionado
+    if (selectProduto && selectProduto.value) {
+        atualizarValoresPorProdutoId(selectProduto.value);
+    }
+</script>
+
+
+</body>
+
+</html>

@@ -78,21 +78,6 @@ h2 {
   box-sizing: border-box;
 }
 
-.edit-produto-container {
-  width: 900px;
-  margin: 0 auto 24px auto;
-  padding: 40px 50px;
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-  background: rgba(255, 220, 180, 0.5);
-  border-radius: 28px;
-  border: 3px solid rgba(255,255,255,0.6);
-  backdrop-filter: blur(3px);
-  box-sizing: border-box;
-}
-
-
 .cadastro-listaprod-container {
   width: 1300px;
   margin: 0 auto 15px auto;
@@ -416,5 +401,6 @@ form.form-produto select {
 .btn-secundario:hover {
     background-color: #333;
 }
+
 
 
