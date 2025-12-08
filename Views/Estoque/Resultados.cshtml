@@ -1,0 +1,102 @@
+@model PapelArt.Models.EstoqueViewModel
+@{
+    ViewData["Title"] = "Resultados do Estoque";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
+
+<body class="Consulta de Estoque">
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <!-- Título -->
+    <div style="container-titulo">
+        <h1 class="cadastro-titulo">RESULTADOS DA CONSULTA</h1>
+    </div>
+
+    <!-- CONTAINER DA TABELA -->
+    <div class="cadastro-listaprod-container">
+
+        @if (Model?.Produtos != null && Model.Produtos.Any())
+        {
+            <table style="width:100%; border-collapse:collapse; font-family:'Zen Maru Gothic', sans-serif;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left; padding:12px; font-size:16px;">Cód</th>
+                        <th style="text-align:left; padding:12px; font-size:16px;">Nome</th>
+                        <th style="text-align:left; padding:12px; font-size:16px;">Descrição</th>
+                        <th style="text-align:right; padding:12px; font-size:16px;">Valor Unitário (R$)</th>
+                        <th style="text-align:right; padding:12px; font-size:16px;">Qtde</th>
+                        <th style="text-align:right; padding:12px; font-size:16px;">Valor Total (R$)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var p in Model.Produtos)
+                    {
+                        <tr style="background: rgba(255,255,255,0.5); border-bottom:1px solid rgba(0,0,0,0.05);">
+                            <td style="padding:10px;">@p.Id</td>
+                            <td style="padding:10px;">@p.Nome</td>
+                            <td style="padding:10px;">@p.Descricao</td>
+                            <td style="padding:10px; text-align:right;">@p.Preco.ToString("N2")</td>
+                            <td style="padding:10px; text-align:right;">@p.Quantidade</td>
+                            <td style="padding:10px; text-align:right;">
+                                @((p.Preco * p.Quantidade).ToString("N2"))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div style="padding:20px; color:#F33E33; font-weight:700;">
+                Nenhum produto encontrado.
+            </div>
+        }
+
+    </div>
+
+    <!-- Botões -->
+     <div class="linha linha-botoes-horizontal">
+        <a href="/Estoque/Consulta" class="btn-cadastrar-produto btn-secundario">
+            NOVA CONSULTA
+        </a>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="menu-footer">
+        <a href="/Estoque/Consulta" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
+
+</body>
+</html>
+

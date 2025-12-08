@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PapelArt.Data;       
-using PapelArt.Models;     // Produto e EstoqueViewModel
+using PapelArt.Data;
+using PapelArt.Models;
 
 namespace PapelArt.Controllers
 {
@@ -14,9 +14,14 @@ namespace PapelArt.Controllers
             _context = context;
         }
 
-        // GET: /Estoque
-        // parâmetros via query string: codigo, nome, showAll
-        public async Task<IActionResult> Index(string codigo, string nome, bool showAll = false)
+        // ✔ Tela 1 — Formulário de consulta
+        public IActionResult Consulta()
+        {
+            return View();
+        }
+
+        // ✔ Tela 2 — Resultados filtrados
+        public async Task<IActionResult> Resultados(string codigo, string nome, bool showAll = false)
         {
             var vm = new EstoqueViewModel
             {
@@ -28,26 +33,24 @@ namespace PapelArt.Controllers
 
             if (!showAll)
             {
-                // se vier código (provavelmente numérico), filtra por Id ou por campo código.
                 if (!string.IsNullOrWhiteSpace(codigo))
                 {
-                    // tenta parse para int; caso o código seja textual, usa Contains
                     if (int.TryParse(codigo, out var id))
-                    {
                         query = query.Where(p => p.Id == id);
-                    }
                     else
-                    {
-                        query = query.Where(p => EF.Functions.Like(p.Id.ToString(), $"%{codigo}%") || EF.Functions.Like(p.Nome, $"%{codigo}%"));
-                    }
+                        query = query.Where(p =>
+                            EF.Functions.Like(p.Id.ToString(), $"%{codigo}%") ||
+                            EF.Functions.Like(p.Nome, $"%{codigo}%")
+                        );
                 }
 
                 if (!string.IsNullOrWhiteSpace(nome))
                 {
-                    query = query.Where(p => EF.Functions.Like(p.Nome, $"%{nome}%"));
+                    query = query.Where(p =>
+                        EF.Functions.Like(p.Nome, $"%{nome}%")
+                    );
                 }
             }
-            // caso showAll == true, mantém query sem filtros e traz tudo
 
             vm.Produtos = await query
                 .OrderBy(p => p.Nome)
@@ -57,3 +60,4 @@ namespace PapelArt.Controllers
         }
     }
 }
+
