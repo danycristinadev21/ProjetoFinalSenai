@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PapelArt</title>
 
-     <!-- Fontes -->
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
@@ -49,50 +49,47 @@
             <form asp-action="Create" method="post" class="form-produto">
 
 
-                
-
-                    <!-- PRODUTO -->
-                    <div class="linha">
-                        <label>PRODUTO:</label>
-                        <select asp-for="ProdutoId" asp-items="ViewBag.Produtos" id="ProdutoId">
-                            <option value="">Selecione...</option>
-                        </select>
-                    </div>
-
-                    <!-- TIPO -->
-                    <div class="linha">
-                        <label>TIPO DE MOVIMENTAÇÃO:</label>
-                        <select asp-for="Tipo" asp-items="Html.GetEnumSelectList<TipoMovimentacao>()">
-                        </select>
-                    </div>
-
-                    <!-- QUANTIDADE -->
-                    <div class="linha">
-                        <label>QUANTIDADE:</label>
-                        <input asp-for="Quantidade" type="number" id="Quantidade" />
-                    </div>
-
-                    <div class="linha">
-                        <label>VALOR UNITÁRIO:</label>
-                        <input asp-for="ValorUnitario" id="ValorUnitario" type="number" step="0.01" readonly />
-                    </div>
-
-                    <div class="linha">
-                        <label>VALOR TOTAL:</label>
-                        <input asp-for="ValorTotal" id="ValorTotal" type="number" step="0.01" readonly />
-                    </div>
 
 
+                <!-- PRODUTO -->
+                <div class="linha">
+                    <label>PRODUTO:</label>
+                    <select asp-for="ProdutoId" asp-items="ViewBag.Produtos" id="ProdutoId">
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+
+                <!-- TIPO -->
+                <div class="linha">
+                    <label>TIPO DE MOVIMENTAÇÃO:</label>
+                    <select asp-for="Tipo" asp-items="Html.GetEnumSelectList<TipoMovimentacao>()">
+                    </select>
+                </div>
+
+                <!-- QUANTIDADE -->
+                <div class="linha">
+                    <label>QUANTIDADE:</label>
+                    <input asp-for="Quantidade" type="number" id="Quantidade" />
+                </div>
+
+                <div class="linha">
+                    <label>VALOR UNITÁRIO:</label>
+                    <input asp-for="ValorUnitario" id="ValorUnitario" type="number" step="0.01" readonly />
+                </div>
+
+                <div class="linha">
+                    <label>VALOR TOTAL:</label>
+                    <input asp-for="ValorTotal" id="ValorTotal" type="number" step="0.01" readonly />
+                </div>
 
 
+                <!-- ✅ CORRETO -->
+                <div class="linha">
+                    <label>Observação:</label>
+                    <input type="text" asp-for="Observacao" class="observacao" />
+                </div>
 
-                    <!-- OBSERVAÇÃO -->
-                    <div class="linha">
-                        <label>OBSERVAÇÃO:</label>
-                        <input type="text" class="observacao">
-                    </div>
 
-                
 
                 <div class="linha linha-botoes-horizontal">
                     <button type="submit" class="btn-principal">REGISTRAR</button>
@@ -121,71 +118,71 @@
         <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
     </footer>
 
- <!-- coloque isto diretamente antes do fechamento </body> -->
-<script>
-    // Serializa a lista vinda do ViewBag (garanta que ViewBag.ListaProdutos não seja null)
-    const produtos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.ListaProdutos ?? new List<object>()));
+    <!-- coloque isto diretamente antes do fechamento </body> -->
+    <script>
+        // Serializa a lista vinda do ViewBag (garanta que ViewBag.ListaProdutos não seja null)
+        const produtos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.ListaProdutos ?? new List<object>()));
 
-    console.log("Produtos carregados:", produtos);
+        console.log("Produtos carregados:", produtos);
 
-    // Elementos do DOM
-    const selectProduto = document.getElementById("ProdutoId");
-    const inputQuantidade = document.getElementById("Quantidade");
-    const inputValorUnitario = document.getElementById("ValorUnitario");
-    const inputValorTotal = document.getElementById("ValorTotal");
+        // Elementos do DOM
+        const selectProduto = document.getElementById("ProdutoId");
+        const inputQuantidade = document.getElementById("Quantidade");
+        const inputValorUnitario = document.getElementById("ValorUnitario");
+        const inputValorTotal = document.getElementById("ValorTotal");
 
-    // Função que atualiza o valor unitário e total a partir do id do produto
-    function atualizarValoresPorProdutoId(produtoId) {
-        if (!produtoId) {
-            inputValorUnitario.value = "";
-            inputValorTotal.value = "";
-            return;
+        // Função que atualiza o valor unitário e total a partir do id do produto
+        function atualizarValoresPorProdutoId(produtoId) {
+            if (!produtoId) {
+                inputValorUnitario.value = "";
+                inputValorTotal.value = "";
+                return;
+            }
+
+            // produtoId vindo do select é string — converta para number
+            const idNum = Number(produtoId);
+
+            // Procura usando a propriedade correta (Id maiúsculo)
+            const produtoSelecionado = produtos.find(p => p.Id === idNum);
+
+            if (!produtoSelecionado) {
+                console.warn("Produto não encontrado no array 'produtos' para id:", produtoId);
+                inputValorUnitario.value = "";
+                inputValorTotal.value = "";
+                return;
+            }
+
+            // Propriedade de preço é "Preco" (maiúsculo), conforme sua classe Produto
+            const precoUnitario = parseFloat(produtoSelecionado.Preco || 0);
+
+            inputValorUnitario.value = precoUnitario.toFixed(2);
+
+            // Recalcula total se já houver quantidade
+            const quantidade = parseFloat(inputQuantidade.value || 0);
+            inputValorTotal.value = (precoUnitario * quantidade).toFixed(2);
         }
 
-        // produtoId vindo do select é string — converta para number
-        const idNum = Number(produtoId);
-
-        // Procura usando a propriedade correta (Id maiúsculo)
-        const produtoSelecionado = produtos.find(p => p.Id === idNum);
-
-        if (!produtoSelecionado) {
-            console.warn("Produto não encontrado no array 'produtos' para id:", produtoId);
-            inputValorUnitario.value = "";
-            inputValorTotal.value = "";
-            return;
+        // Evento: quando troca de produto
+        if (selectProduto) {
+            selectProduto.addEventListener("change", function () {
+                atualizarValoresPorProdutoId(this.value);
+            });
         }
 
-        // Propriedade de preço é "Preco" (maiúsculo), conforme sua classe Produto
-        const precoUnitario = parseFloat(produtoSelecionado.Preco || 0);
+        // Evento: quando muda quantidade (recalcula com o valor unitário atual)
+        if (inputQuantidade) {
+            inputQuantidade.addEventListener("input", function () {
+                const preco = parseFloat(inputValorUnitario.value || 0);
+                const qtd = parseFloat(this.value || 0);
+                inputValorTotal.value = (preco * qtd).toFixed(2);
+            });
+        }
 
-        inputValorUnitario.value = precoUnitario.toFixed(2);
-
-        // Recalcula total se já houver quantidade
-        const quantidade = parseFloat(inputQuantidade.value || 0);
-        inputValorTotal.value = (precoUnitario * quantidade).toFixed(2);
-    }
-
-    // Evento: quando troca de produto
-    if (selectProduto) {
-        selectProduto.addEventListener("change", function () {
-            atualizarValoresPorProdutoId(this.value);
-        });
-    }
-
-    // Evento: quando muda quantidade (recalcula com o valor unitário atual)
-    if (inputQuantidade) {
-        inputQuantidade.addEventListener("input", function () {
-            const preco = parseFloat(inputValorUnitario.value || 0);
-            const qtd = parseFloat(this.value || 0);
-            inputValorTotal.value = (preco * qtd).toFixed(2);
-        });
-    }
-
-    // Se quiser, você pode forçar uma atualização inicial caso já exista um produto selecionado
-    if (selectProduto && selectProduto.value) {
-        atualizarValoresPorProdutoId(selectProduto.value);
-    }
-</script>
+        // Se quiser, você pode forçar uma atualização inicial caso já exista um produto selecionado
+        if (selectProduto && selectProduto.value) {
+            atualizarValoresPorProdutoId(selectProduto.value);
+        }
+    </script>
 
 
 </body>
