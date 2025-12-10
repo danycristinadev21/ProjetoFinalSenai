@@ -10,10 +10,10 @@ namespace PapelArt.Controllers
 {
     public class CategoriasController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly PapelArtContext _context;
 
         // Construtor — injeta o contexto do banco
-        public CategoriasController(ApplicationDbContext context)
+        public CategoriasController(PapelArtContext context)
         {
             _context = context;
         }

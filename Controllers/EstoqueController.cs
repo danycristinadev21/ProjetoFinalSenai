@@ -7,9 +7,9 @@ namespace PapelArt.Controllers
 {
     public class EstoqueController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly PapelArtContext _context;
 
-        public EstoqueController(ApplicationDbContext context)
+        public EstoqueController(PapelArtContext context)
         {
             _context = context;
         }
