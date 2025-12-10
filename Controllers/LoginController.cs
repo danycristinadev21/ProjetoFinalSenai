@@ -1,8 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using PapelArt.Models;
 using Microsoft.EntityFrameworkCore;
@@ -33,11 +35,35 @@ namespace PapelArt.Controllers
 
             if (usuario != null)
             {
-                // Guarda dados na sessão
+                // ✅ NOVO: Cria CLAIMS com ID do usuário
+                var claims = new List<Claim>
+                {
+                    new Claim("Id", usuario.Id.ToString()),           // ✅ ID para GetUsuarioLogadoId()
+                    new Claim(ClaimTypes.Name, usuario.Nome),         // Nome
+                    new Claim(ClaimTypes.Email, usuario.Email),       // Email
+                    new Claim("NivelAcesso", usuario.NivelAcesso)     // Seu campo customizado
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true, // Mantém login após fechar navegador
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
+                };
+
+                // ✅ AUTENTICAÇÃO COM COOKIES (resolve o problema do ID=1)
+                await HttpContext.SignInAsync(
+    "CookieAuth",  // ← MESMO NOME do Program.cs!
+    new ClaimsPrincipal(claimsIdentity),
+    authProperties);
+
+                // ✅ MANTER SESSÃO (compatibilidade com código existente)
+                HttpContext.Session.SetString("UsuarioId", usuario.Id.ToString());
                 HttpContext.Session.SetString("UsuarioNome", usuario.Nome);
                 HttpContext.Session.SetString("UsuarioNivel", usuario.NivelAcesso);
 
-                // Redireciona para a página inicial
+HttpContext.Items["UsuarioLogadoId"] = usuario.Id;
+                 
                 return RedirectToAction("Index", "Home");
             }
 
@@ -46,10 +72,17 @@ namespace PapelArt.Controllers
         }
 
         // Logout
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
+            // ✅ LOGOUT COMPLETO (cookies + sessão)
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
+            HttpContext.Items.Remove("UsuarioLogadoId");
             return RedirectToAction("Index", "Login");
         }
-    }
+
+ 
+    
+     }
 }
+

@@ -6,29 +6,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    // Usar o provedor MySQL
-    options.UseMySql(
-        connectionString,
-        ServerVersion.AutoDetect(connectionString), // Detecta a versão do seu MySQL
-        mysqlOptions => mysqlOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
-    );
-});
+// ✅ Authentication
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/Login/Index";
+        options.AccessDeniedPath = "/Login/AcessoNegado";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    });
+builder.Services.AddAuthorization();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
-    ));
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
-
+// ✅ SÓ 1 DbContext
 builder.Services.AddDbContext<PapelArtContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36))));
-    
 
+// ✅ Session
+builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -41,12 +34,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();  // ✅ Antes Routing
 app.UseRouting();
+app.UseAuthentication();  // ✅ Correto
+app.UseAuthorization();   // ✅ Correto
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseSession();
 app.Run();
+
 

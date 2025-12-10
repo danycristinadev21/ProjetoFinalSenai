@@ -5,28 +5,6 @@
     Layout = null;
 }
 
-<style>
-    .conteudo-centralizado {
-        max-width: 800px;
-        margin: 0 auto;
-        background: rgba(255, 220, 180, 0.5);
-        border-radius: 28px;
-        border: 3px solid rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(3px);
-        padding: 40px 40px;
-        margin-bottom: 20px;
-    }
-
-    .observacao-maior {
-        height: 100px;
-        width: 380px;
-        resize: none;
-        border: 2px solid #FF7C2C;
-        border-radius: 12px;
-        background: #fff;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
-    }
-</style>
 
 
 <!DOCTYPE html>
@@ -37,14 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PapelArt</title>
 
+     <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/menu.css" />
-    <link rel="stylesheet" href="~/css/layout.css" />
     <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
     <link rel="stylesheet" href="~/css/cadastro-produto.css" />
 </head>
 
-<body class="Movimentacao">
+<body>
 
     <!-- Cabeçalho -->
     <header class="header">
@@ -62,12 +44,12 @@
     </div>
 
     <div class="container-centered">
-        <div class="cadastro-listprod-container">
+        <div class="cadastro-produto-container">
 
             <form asp-action="Create" method="post" class="form-produto">
 
 
-                <div class="conteudo-centralizado">
+                
 
                     <!-- PRODUTO -->
                     <div class="linha">
@@ -75,12 +57,6 @@
                         <select asp-for="ProdutoId" asp-items="ViewBag.Produtos" id="ProdutoId">
                             <option value="">Selecione...</option>
                         </select>
-                    </div>
-
-                    <!-- CÓDIGO -->
-                    <div class="linha">
-                    <label>CÓDIGO:</label>
-                    <input type="text" value="Gerado automaticamente" disabled />
                     </div>
 
                     <!-- TIPO -->
@@ -113,11 +89,10 @@
                     <!-- OBSERVAÇÃO -->
                     <div class="linha">
                         <label>OBSERVAÇÃO:</label>
-                        <textarea asp-for="Observacao" class="observacao-maior">
-            </textarea>
+                        <input type="text" class="observacao">
                     </div>
 
-                </div>
+                
 
                 <div class="linha linha-botoes-horizontal">
                     <button type="submit" class="btn-principal">REGISTRAR</button>
@@ -125,6 +100,17 @@
 
             </form>
 
+            <!-- PAINEL DIREITO -->
+            <div class="painel-rapido">
+                <h2>PAINEL DE<br>NAVEGAÇÃO RÁPIDA</h2>
+
+                <div class="painel-links">
+                    <a class="painel-link" href="/Categorias/Create">CADASTRAR CATEGORIA</a>
+                    <a class="painel-link" href="/Estoque/Index">CONSULTAR ESTOQUE</a>
+                    <a class="painel-link" href="/Relatorios/Index">GERAR RELATÓRIO</a>
+                    <a class="painel-link" href="/Movimentacoes/Create">REGISTRAR ENTRADA / SAÍDA</a>
+                </div>
+            </div>
 
 
         </div>

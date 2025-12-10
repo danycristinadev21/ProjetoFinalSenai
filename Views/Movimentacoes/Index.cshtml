@@ -52,6 +52,7 @@
                         <th>Tipo</th>
                         <th>Quantidade</th>
                         <th>Data</th>
+                        <th>Usuário</th>
                         <th>Observação</th>
                     </tr>
                 </thead>
@@ -63,6 +64,7 @@
                             <td>@item.Tipo</td>
                             <td>@item.Quantidade</td>
                             <td>@item.DataMovimentacao.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@item.Usuario?.Nome</td>
                             <td>@item.Observacao</td>
                         </tr>
                     }
