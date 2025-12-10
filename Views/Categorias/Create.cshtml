@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +29,9 @@
     <!-- Cabeçalho -->
     <header class="header">
         <div class="logo">
-            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+            <a asp-controller="Home" asp-action="Menu" title="Voltar ao Menu">
+                <img src="~/images/logo.jpg" alt="Logo PapelArt - Voltar ao Menu" />
+            </a>
         </div>
 
         <div class="titulo">
@@ -47,29 +50,29 @@
         <div class="cadastro-produto-container">
 
             <!-- FORMULÁRIO DE CATEGORIA -->
-<form method="post" asp-action="Create" class="form-produto form-area">
-    @Html.AntiForgeryToken()
+            <form method="post" asp-action="Create" class="form-produto form-area">
+                @Html.AntiForgeryToken()
 
-    <div class="linha">
-        <label>CÓDIGO:</label>
-        <input type="text" value="Gerado automaticamente" disabled />
-    </div>
+                <div class="linha">
+                    <label>CÓDIGO:</label>
+                    <input type="text" value="Gerado automaticamente" disabled />
+                </div>
 
-    <div class="linha">
-        <label>NOME:</label>
-        <input asp-for="Nome" />
-        <span asp-validation-for="Nome" class="text-danger"></span>
-    </div>
+                <div class="linha">
+                    <label>NOME:</label>
+                    <input asp-for="Nome" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
 
-    <div class="linha">
-        <label>CATEGORIA PAI:</label>
-        <select asp-for="CategoriaPaiId" asp-items="ViewBag.CategoriasPai">
-            <option value="">Nenhuma (Categoria principal)</option>
-        </select>
-    </div>
+                <div class="linha">
+                    <label>CATEGORIA PAI:</label>
+                    <select asp-for="CategoriaPaiId" asp-items="ViewBag.CategoriasPai">
+                        <option value="">Nenhuma (Categoria principal)</option>
+                    </select>
+                </div>
 
-    <button class="btn-cadastrar-produto" type="submit">CADASTRAR</button>
-</form>
+                <button class="btn-cadastrar-produto" type="submit">CADASTRAR</button>
+            </form>
 
             <!-- PAINEL DIREITO -->
             <div class="painel-rapido">
@@ -93,5 +96,5 @@
     </footer>
 
 </body>
-</html>
 
+</html>

@@ -27,7 +27,9 @@
     <!-- Cabeçalho -->
     <header class="header">
         <div class="logo">
-            <img src="~/images/logo.jpg" alt="Logo PapelArt" />
+            <a asp-controller="Home" asp-action="Menu" title="Voltar ao Menu">
+                <img src="~/images/logo.jpg" alt="Logo PapelArt - Voltar ao Menu" />
+            </a>
         </div>
         <div class="titulo">
             <h1>PapelArt - Material Escolar</h1>
@@ -63,7 +65,7 @@
 
                 <div class="linha">
                     <a href="@Url.Action("Resultados", "Estoque", new { showAll = true })"
-                       class="btn-cadastrar-produto">
+                        class="btn-cadastrar-produto">
                         CONSULTA GERAL
                     </a>
                 </div>
@@ -92,5 +94,5 @@
     </footer>
 
 </body>
-</html>
 
+</html>
