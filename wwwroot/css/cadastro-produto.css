@@ -444,4 +444,14 @@ form.form-area .linha input:disabled {
 }
 
 
+.campos-obrigatorios {
+    margin: 20px auto 30px auto !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    color: #F33E33 !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    max-width: 450px !important;  /* mesma largura dos campos */
+}
+
 

@@ -55,7 +55,7 @@
 
                 <!-- PRODUTO -->
                 <div class="linha">
-                    <label>PRODUTO:</label>
+                    <label>PRODUTO*:</label>
                     <select asp-for="ProdutoId" asp-items="ViewBag.Produtos" id="ProdutoId">
                         <option value="">Selecione...</option>
                     </select>
@@ -63,14 +63,14 @@
 
                 <!-- TIPO -->
                 <div class="linha">
-                    <label>TIPO DE MOVIMENTAÇÃO:</label>
+                    <label>TIPO DE MOVIMENTAÇÃO*:</label>
                     <select asp-for="Tipo" asp-items="Html.GetEnumSelectList<TipoMovimentacao>()">
                     </select>
                 </div>
 
                 <!-- QUANTIDADE -->
                 <div class="linha">
-                    <label>QUANTIDADE:</label>
+                    <label>QUANTIDADE*:</label>
                     <input asp-for="Quantidade" type="number" id="Quantidade" />
                 </div>
 
@@ -90,6 +90,11 @@
                     <label>OBSERVAÇÃO:</label>
                     <input type="text" asp-for="Observacao" class="observacao" />
                 </div>
+
+                <p class="campos-obrigatorios">
+                    *Campos de preenchimento obrigatório
+                </p>
+
 
                 <button class="btn-cadastrar-produto" type="submit">REGISTRAR</button>
 

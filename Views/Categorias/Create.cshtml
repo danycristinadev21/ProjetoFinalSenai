@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="linha">
-                    <label>NOME:</label>
+                    <label>NOME*:</label>
                     <input asp-for="Nome" />
                     <span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
@@ -70,6 +70,11 @@
                         <option value="">Nenhuma (Categoria principal)</option>
                     </select>
                 </div>
+
+                <p class="campos-obrigatorios">
+                    *Campos de preenchimento obrigatório
+                </p>
+
 
                 <button class="btn-cadastrar-produto" type="submit">CADASTRAR</button>
             </form>
