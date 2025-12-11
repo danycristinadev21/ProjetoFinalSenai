@@ -1,0 +1,65 @@
+@model List<PapelArt.Models.Movimentacao>
+
+
+<div class="cadastro-listaprod-container">
+    <h2 class="cadastro-titulo">📋 Relatório de Movimentações</h2>
+    
+    <!-- Botões de Exportação -->
+    <div style="text-align: center; margin-bottom: 30px;">
+        <button onclick="window.print()" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px;">
+            🖨️ IMPRIMIR
+        </button>
+        <button onclick="exportToPDF()" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px; background: linear-gradient(180deg, #28a745, #20c997);">
+            📄 PDF
+        </button>
+        <a asp-action="Index" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px; background: linear-gradient(180deg, #6c757d, #495057); text-decoration: none; display: inline-block; line-height: 1.5;">
+            🔄 NOVO RELATÓRIO
+        </a>
+    </div>
+
+    <!-- Tabela do Relatório -->
+    <div style="overflow-x: auto; margin-bottom: 30px;">
+        <table class="table table-striped" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+            <thead style="background: linear-gradient(180deg, #FF7C2C, #F33E33); color: white;">
+                <tr>
+                    <th style="padding: 15px;">Data/Hora</th>
+                    <th style="padding: 15px;">Produto</th>
+                    <th style="padding: 15px;">Tipo</th>
+                    <th style="padding: 15px;">Qtd</th>
+                    <th style="padding: 15px;">Valor Unit.</th>
+                    <th style="padding: 15px;">Total</th>
+                    <th style="padding: 15px;">Usuário</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 12px;">@m.DataMovimentacao.ToString("dd/MM<br>HH:mm")</td>
+                        <td style="padding: 12px; font-weight: 500;">@m.Produto.Nome</td>
+                        <td style="padding: 12px;">
+                            <span style="color: @(m.Tipo == PapelArt.Models.TipoMovimentacao.Entrada ? "#28a745" : "#dc3545"); font-weight: bold; padding: 4px 8px; border-radius: 12px; background: rgba(255,255,255,0.2);">
+    @m.Tipo
+</span>
+
+                        </td>
+                        <td style="padding: 12px; font-weight: bold; font-size: 16px;">@m.Quantidade</td>
+                        <td style="padding: 12px;">R$ @m.ValorUnitario.ToString("N2")</td>
+                        <td style="padding: 12px; font-weight: bold; color: #F33E33; font-size: 16px;">R$ @m.ValorTotal.ToString("N2")</td>
+                        <td style="padding: 12px;">@m.Usuario.Nome</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <p class="campos-obrigatorios" style="margin-top: 0;">
+        Total de registros: <strong>@Model.Count</strong>
+    </p>
+</div>
+
+<script>
+function exportToPDF() {
+    window.print();
+}
+</script>
