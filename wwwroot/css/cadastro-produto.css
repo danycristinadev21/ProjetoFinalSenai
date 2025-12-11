@@ -65,7 +65,7 @@ h2 {
 
 /* ===== CONTAINER PRINCIPAL (form + painel) ===== */
 .cadastro-produto-container {
-  width: 1100px;
+  width: 1200px;
   margin: 0 auto 24px auto;
   padding: 40px 50px;
   display: flex;
@@ -400,6 +400,47 @@ form.form-produto select {
 
 .btn-secundario:hover {
     background-color: #333;
+}
+
+/* ===== CATEGORIA - LARGURA 100% IGUAL (MÁXIMA ESPECIFICIDADE) ===== */
+form.form-area .linha {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+form.form-area .linha label {
+    width: 160px !important;
+    min-width: 160px !important;
+    flex-shrink: 0 !important;
+    text-align: right !important;
+    font-weight: 700 !important;
+    color: #F33E33 !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+form.form-area .linha input,
+form.form-area .linha select {
+    flex: 1 1 450px !important;     /* ← FORÇA 450px MÍNIMO */
+    width: 450px !important;        /* ← LARGURA EXATA */
+    max-width: 450px !important;
+    height: 42px !important;
+    padding: 0 15px !important;
+    margin: 0 !important;
+    border: 2px solid #FF7C2C !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+form.form-area .linha input:disabled {
+    background-color: #f8f9fa !important;
+    color: #666 !important;
 }
 
 

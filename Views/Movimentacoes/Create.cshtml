@@ -48,7 +48,7 @@
     <div class="container-centered">
         <div class="cadastro-produto-container">
 
-            <form asp-action="Create" method="post" class="form-produto">
+            <form asp-action="Create" method="post" class="form-area form-produto">
 
 
 
@@ -87,15 +87,11 @@
 
                 <!-- ✅ CORRETO -->
                 <div class="linha">
-                    <label>Observação:</label>
+                    <label>OBSERVAÇÃO:</label>
                     <input type="text" asp-for="Observacao" class="observacao" />
                 </div>
 
-
-
-                <div class="linha linha-botoes-horizontal">
-                    <button type="submit" class="btn-principal">REGISTRAR</button>
-                </div>
+                <button class="btn-cadastrar-produto" type="submit">REGISTRAR</button>
 
             </form>
 
@@ -104,10 +100,10 @@
                 <h2>PAINEL DE<br>NAVEGAÇÃO RÁPIDA</h2>
 
                 <div class="painel-links">
+                    <a class="painel-link" href="/Produtos/Create">CADASTRAR PRODUTO</a>
                     <a class="painel-link" href="/Categorias/Create">CADASTRAR CATEGORIA</a>
-                    <a class="painel-link" href="/Estoque/Index">CONSULTAR ESTOQUE</a>
-                    <a class="painel-link" href="/Relatorios/Index">GERAR RELATÓRIO</a>
-                    <a class="painel-link" href="/Movimentacoes/Create">REGISTRAR ENTRADA / SAÍDA</a>
+                    <a class="painel-link" href="/Estoque/Consulta">CONSULTAR ESTOQUE</a>
+                    <a class="painel-link" href="/Relatorios/Create">GERAR RELATÓRIO</a>
                 </div>
             </div>
 
