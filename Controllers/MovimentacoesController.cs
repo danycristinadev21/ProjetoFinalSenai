@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PapelArt.Models;
+using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 //using System;
 //using System.Linq;
@@ -11,6 +12,7 @@ using System.Security.Claims;
 
 namespace PapelArt.Controllers
 {
+    [Authorize]
     public class MovimentacoesController : Controller
     {
         private readonly PapelArtContext _context;

@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="~/css/layout.css" />
     <link rel="stylesheet" href="~/css/login-cadastro.css" />
 </head>
+
 <body>
     <!-- Cabeçalho -->
     <header class="header">
@@ -29,16 +31,17 @@
     <div class="container-login">
         <div class="card-login">
             <h2>LOGIN</h2>
-            @if (TempData["Error"] != null) 
+            @if (ViewBag.Erro != null)
             {
-                <div class="alert alert-danger" role="alert">
-                @TempData["Error"]
+                <div style="color:red; margin-bottom:10px;">
+                    @ViewBag.Erro
                 </div>
             }
+            
             @if (TempData["Success"] != null)
             {
                 <div class="alert alert-success" role="alert">
-                @TempData["Success"]
+                    @TempData["Success"]
                 </div>
             }
 
@@ -49,20 +52,19 @@
                 <label for="senha">Senha*:</label>
                 <input type="password" id="senha" name="senha" required />
 
-                <p style="margin-top: 10px; font-size: 14px; font-weight: 500; font-style: italic; color: #F33E33;">*Campos de preenchimento obrigatório</p>
+                <p style="margin-top: 10px; font-size: 14px; font-weight: 500; font-style: italic; color: #F33E33;">
+                    *Campos de preenchimento obrigatório</p>
 
                 <button type="submit">ACESSAR</button>
             </form>
 
             <p style="margin-top: 15px;">Ainda não tem cadastro?</p>
-            <a href="/Usuarios/Cadastro" class="btn btn-link" style="color: var(--laranja); font-weight: bold;">Crie ou atualize seu cadastro</a>
+            <a href="/Usuarios/Cadastro" class="btn btn-link" style="color: var(--laranja); font-weight: bold;">Crie ou
+                atualize seu cadastro</a>
         </div>
     </div>
 
     <footer></footer>
 </body>
+
 </html>
-
-
-
-

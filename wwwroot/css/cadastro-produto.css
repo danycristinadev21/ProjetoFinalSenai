@@ -184,6 +184,7 @@ form.form-produto select {
   font-size: 22px;
   font-weight: 800;
   font-family: "Zen Maru Gothic", sans-serif;
+  text-decoration: none;
 
   border-radius: 40px;
   border: none;
@@ -194,6 +195,7 @@ form.form-produto select {
 
 .btn-cadastrar-produto:hover {
   transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .btn-novo-produto {
@@ -205,6 +207,7 @@ form.form-produto select {
   color: #fff;
   font-size: 20px;
   font-weight: 700;
+  text-decoration: none;
 
   border-radius: 40px;
   border: none;
@@ -215,6 +218,7 @@ form.form-produto select {
 
 .btn-novo-produto:hover {
   transform: translateY(-2px);
+  text-decoration: none;
 }
 
 /* ===== PAINEL RÁPIDO (direita) ===== */
@@ -378,7 +382,7 @@ form.form-produto select {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin: 0 0 30px 0;
+    margin: 0 0 10px 0;
 }
 
 .form-botao {
@@ -460,4 +464,38 @@ form.form-area .linha input:disabled {
     max-width: 450px !important;  /* mesma largura dos campos */
 }
 
+/* caixinha do usuário logado no canto direito */
+.usuario-logado-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    color: #F33E33;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* texto do nome */
+.usuario-logado-nome {
+    font-weight: 700;
+}
+
+/* botão sair combinando com o sistema */
+.btn-logout-header {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #F33E33, #FF7C2C);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-logout-header:hover {
+    transform: scale(1.03);
+}
 

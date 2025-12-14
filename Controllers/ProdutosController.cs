@@ -2,9 +2,11 @@ using PapelArt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PapelArt.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private readonly PapelArtContext _context;

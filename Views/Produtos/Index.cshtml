@@ -53,7 +53,8 @@
 
     @if (TempData["MensagemSucesso"] != null)
     {
-        <div style="background: #FFC62980; color: black; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #FF7C2C;">
+        <div
+            style="background: #FFC62980; color: black; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #FF7C2C;">
             @TempData["MensagemSucesso"]
         </div>
     }
@@ -116,6 +117,27 @@
         </div>
 
     </div>
+
+    <!-- Botões Rápidos -->
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 0; flex-wrap: wrap;">
+        <button class="painel-link" onclick="window.print()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
+            🖨️ IMPRIMIR
+        </button>
+        <button class="painel-link" onclick="exportToPDF()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
+            📄 SALVAR PDF
+        </button>
+        <a href="@Url.Action("Menu", "Home")" class="painel-link" style="width: 200px; text-align: center">🏠 MENU
+            PRINCIPAL</a>
+    </div>
+
+    <script>
+        function exportToPDF() {
+            window.print();
+        }
+    </script>
+
 
     <!-- Rodapé -->
     <footer class="menu-footer">

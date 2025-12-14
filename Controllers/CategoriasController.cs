@@ -5,9 +5,11 @@ using PapelArt.Data;                        // ✅ Usando ApplicationDbContext
 using PapelArt.Models;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PapelArt.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private readonly PapelArtContext _context;

@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using PapelArt.Models;
 using PapelArt.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PapelArt.Controllers
 {
+    [Authorize]
     public class RelatoriosController : Controller
     {
         private readonly PapelArtContext _context;

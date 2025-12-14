@@ -10,8 +10,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", options =>
     {
-        options.LoginPath = "/Login/Index";
-        options.AccessDeniedPath = "/Login/AcessoNegado";
+        options.LoginPath = "/Usuarios/Login";        
+        options.AccessDeniedPath = "/Usuarios/Login";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     });
 builder.Services.AddAuthorization();

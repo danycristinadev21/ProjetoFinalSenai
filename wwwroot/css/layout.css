@@ -81,3 +81,51 @@ footer {
  
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo à esquerda, info à direita */
+    padding: 0 30px;
+}
+
+/* garante que título fique centralizado mesmo com a box à direita */
+.header .titulo {
+    text-align: center;
+    flex: 1;
+}
+
+/* caixinha do usuário logado no canto direito */
+.header .usuario-logado-box {
+    display: flex;
+    flex-direction: column;  /* ← ADICIONE esta linha */
+    align-items: center;     /* ← MUDE de flex para center */
+    gap: 6px;                /* ← REDUZA o gap */
+    padding: 8px 12px;      /* ← AUMENTE um pouco o padding */
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    color: #F33E33;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* texto do nome */
+.usuario-logado-nome {
+    font-weight: 700;
+}
+
+/* botão sair combinando com o sistema */
+.btn-logout-header {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #FFC629, #FF7C2C);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-logout-header:hover {
+    transform: scale(1.03);
+}

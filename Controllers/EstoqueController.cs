@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PapelArt.Data;
 using PapelArt.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PapelArt.Controllers
 {
+    [Authorize]
     public class EstoqueController : Controller
     {
         private readonly PapelArtContext _context;
