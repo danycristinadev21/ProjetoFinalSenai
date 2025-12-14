@@ -26,6 +26,14 @@
 
 <body class="bg-sistema">
 
+    @if (TempData["ProdutoExcluido"] != null)
+    {
+        <div
+            style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #28a745;">
+            ✅ @TempData["ProdutoExcluido"]
+        </div>
+    }
+
     <!-- CABEÇALHO -->
     <header class="header">
         <div class="logo">
@@ -43,15 +51,15 @@
         <h1 class="cadastro-titulo">EXCLUIR PRODUTO</h1>
     </div>
 
-<div class="container-titulo">
-    <h2>Tem certeza que deseja excluir este produto?</h2>
-</div>
+    <div class="container-titulo">
+        <h2>Tem certeza que deseja excluir este produto?</h2>
+    </div>
     <!-- CONTAINER PRINCIPAL -->
     <div class="container-centered container-detalhes-produto">
         <div class="cadastro-listaprod-container">
 
 
-<!-- DETALHES -->
+            <!-- DETALHES -->
             <div class="produto-detalhes-card">
 
                 <div class="grupo-detalhes">
@@ -101,26 +109,22 @@
     </div>
 
 
-<!-- BOTÕES -->
-<div class="linha linha-botoes-horizontal">
-
-    <button type="button"
-            class="btn-cadastrar-produto btn-danger"
-            onclick="document.getElementById('formDelete').submit();">
-        EXCLUIR
-    </button>
-
-    <form asp-action="DeleteConfirmed" method="post" id="formDelete" style="display:none;">
+    <!-- BOTÕES -->
+    <!-- FORM CORRETO - ENVOLVA OS BOTÕES! -->
+    <form asp-action="Delete" method="post">
         <input type="hidden" asp-for="Id" />
+
+        <div class="linha linha-botoes-horizontal">
+            <button type="submit" class="btn-cadastrar-produto btn-danger">
+                EXCLUIR
+            </button>
+
+            <a href="@Url.Action("Index")" class="btn-cadastrar-produto btn-secundario">
+                CANCELAR
+            </a>
+        </div>
     </form>
 
-    <button type="button"
-            onclick="history.back()"
-            class="btn-cadastrar-produto btn-secundario">
-        CANCELAR
-    </button>
-
-</div>
 
 
     <!-- RODAPÉ FIXO -->
@@ -133,5 +137,3 @@
 </body>
 
 </html>
-    
-

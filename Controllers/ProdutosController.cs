@@ -16,16 +16,16 @@ namespace PapelArt.Controllers
 
         // GET: Produtos
         // Ex.: Index action
-public IActionResult Index()
-{
-    // Carrega produtos com categoria e a categoria pai (se existir)
-    var produtos = _context.Produtos
-        .Include(p => p.Categoria)
-            .ThenInclude(c => c.CategoriaPai)   // garante CategoriaPai carregada
-        .ToList();
+        public IActionResult Index()
+        {
+            // Carrega produtos com categoria e a categoria pai (se existir)
+            var produtos = _context.Produtos
+                .Include(p => p.Categoria)
+                    .ThenInclude(c => c.CategoriaPai)   // garante CategoriaPai carregada
+                .ToList();
 
-    return View(produtos);
-}
+            return View(produtos);
+        }
 
 
         // GET: Produtos/Create
@@ -45,50 +45,50 @@ public IActionResult Index()
 
         // POST: Produtos/Create
         [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Create(Produto produto)
-{
-    if (ModelState.IsValid)
-    {
-        _context.Produtos.Add(produto);
-        await _context.SaveChangesAsync();
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Produtos.Add(produto);
+                await _context.SaveChangesAsync();
 
-        TempData["MensagemSucesso"] = "Produto cadastrado com sucesso!";
-        return RedirectToAction(nameof(Index));
-    }
+                TempData["MensagemSucesso"] = "PRODUTO CADASTRADO COM SUCESSO!";
+                return RedirectToAction(nameof(Index));
+            }
 
-    ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nome");
-    return View(produto);
-}
+            ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nome");
+            return View(produto);
+        }
 
 
 
         // GET: Produtos/Edit/5
         public IActionResult Edit(int? id)
-{
-    if (id == null)
-        return NotFound();
-
-    var produto = _context.Produtos
-        .Include(p => p.Categoria)
-        .FirstOrDefault(p => p.Id == id);
-
-    if (produto == null)
-        return NotFound();
-
-    ViewBag.Categorias = _context.Categorias
-        .OrderBy(c => c.Nome)
-        .Select(c => new SelectListItem
         {
-            Value = c.Id.ToString(),
-            Text = c.CategoriaPai != null 
-                   ? c.CategoriaPai.Nome + " → " + c.Nome
-                   : c.Nome
-        })
-        .ToList();
+            if (id == null)
+                return NotFound();
 
-    return View(produto);
-}
+            var produto = _context.Produtos
+                .Include(p => p.Categoria)
+                .FirstOrDefault(p => p.Id == id);
+
+            if (produto == null)
+                return NotFound();
+
+            ViewBag.Categorias = _context.Categorias
+                .OrderBy(c => c.Nome)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.CategoriaPai != null
+                           ? c.CategoriaPai.Nome + " → " + c.Nome
+                           : c.Nome
+                })
+                .ToList();
+
+            return View(produto);
+        }
 
 
         // POST: Produtos/Edit/5
@@ -126,17 +126,18 @@ public async Task<IActionResult> Create(Produto produto)
         // POST: Produtos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var produto = _context.Produtos.Find(id);
+            var produto = await _context.Produtos.FindAsync(id);
 
             if (produto != null)
             {
                 _context.Produtos.Remove(produto);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
+                TempData["ProdutoExcluido"] = "PRODUTO EXCLUÍDO COM SUCESSO!";  // ✅ ADICIONE ESTA LINHA
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Produtos");
         }
 
         // GET: Produtos/Details/5
