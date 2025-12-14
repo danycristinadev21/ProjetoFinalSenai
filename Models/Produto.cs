@@ -26,12 +26,6 @@ namespace PapelArt.Models
         [Column("quantidade")]
         public int Quantidade { get; set; }
 
-        [Column("estoque_minimo")]
-        public int EstoqueMinimo { get; set; }
-
-        [Column("estoque_maximo")]
-        public int EstoqueMaximo { get; set; }
-
         // FK obrigatória para categoria
         [Required(ErrorMessage = "Selecione uma categoria.")]
         [Column("id_categoria")]

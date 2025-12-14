@@ -82,17 +82,56 @@ public class UsuariosController : Controller
         return RedirectToAction("Menu", "Home");
     }
 
-    private string GerarHash(string input)
-    {
-        using (var sha = SHA256.Create())
+    // ========== CADASTRO ==========
+
+        [HttpGet]
+        public IActionResult Cadastro()
         {
-            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
-            var sb = new StringBuilder();
-            foreach (var b in bytes)
-                sb.Append(b.ToString("x2"));
-            return sb.ToString();
+            return View();
         }
-    }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Cadastrar(Usuario usuario)
+        {
+            Console.WriteLine($"[DEBUG] Tentando cadastrar usuário: {usuario.Email}");
+
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Por favor, preencha todos os campos corretamente.";
+                return View("Cadastro", usuario);
+            }
+
+            bool existeEmail = await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
+            if (existeEmail)
+            {
+                TempData["Error"] = "Este e-mail já está cadastrado.";
+                return View("Cadastro", usuario);
+            }
+
+            // Criptografar senha antes de salvar
+            usuario.Senha = GerarHash(usuario.Senha);
+            usuario.NivelAcesso = "usuario";
+
+            _context.Add(usuario);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Usuário cadastrado com sucesso!";
+            return RedirectToAction("Login");
+        }
+
+        // ========== MÉTODO AUXILIAR ==========
+        private string GerarHash(string input)
+        {
+            using (var sha = SHA256.Create())
+            {
+                var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var sb = new StringBuilder();
+                foreach (var b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
 
     public async Task<IActionResult> Logout()
     {
