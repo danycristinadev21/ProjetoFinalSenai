@@ -32,11 +32,28 @@
                 <img src="~/images/logo.jpg" alt="Logo PapelArt - Voltar ao Menu" />
             </a>
         </div>
+
         <div class="titulo">
             <h1>PapelArt - Material Escolar</h1>
             <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
         </div>
+
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <div class="usuario-logado-box">
+                <span class="usuario-logado-nome">
+                    Usuário: @User.Identity.Name
+                </span>
+
+                <form asp-controller="Usuarios" asp-action="Logout" method="post">
+                    <button type="submit" class="btn-logout-header">
+                        Sair
+                    </button>
+                </form>
+            </div>
+        }
     </header>
+
 
     <!-- Título -->
     <div style="container-titulo">
@@ -114,10 +131,18 @@
         }
     </script>
 
-    <!-- RODAPÉ Fixo -->
+<!-- RODAPÉ -->
     <footer class="menu-footer">
         <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
-        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+        @using (Html.BeginForm("Logout", "Usuarios", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.forms[0].submit();" class="footer-btn"
+                onclick="return confirm('Deseja realmente sair?')">
+                SAIR &#8680
+            </a>
+        }
+
     </footer>
 
 
