@@ -39,6 +39,7 @@ h2 {
   padding-right: 20px;
   padding-bottom: 30px; /* garante que conteúdo não fique por baixo do footer */
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .container-detalhes-produto {
@@ -66,7 +67,7 @@ h2 {
 /* ===== CONTAINER PRINCIPAL (form + painel) ===== */
 .cadastro-produto-container {
   width: 1200px;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 20px auto;
   padding: 40px 50px;
   display: flex;
   gap: 40px;
@@ -80,7 +81,7 @@ h2 {
 
 .cadastro-listaprod-container {
   width: 1300px;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 20px auto;
   padding: 40px 40px;
   display: flex;
   gap: 20px;
@@ -249,6 +250,9 @@ form.form-produto select {
   text-shadow: 1px 1px 2px #F33E33;
   border-radius: 20px;
   box-shadow: 0 5px 0 #E67628;
+  font-family: "Zen Maru Gothic", sans-serif;
+  outline: none !important; 
+  border: none !important;
 }
 
 .painel-rapido a:hover,

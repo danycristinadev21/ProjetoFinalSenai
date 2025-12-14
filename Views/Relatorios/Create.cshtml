@@ -1,65 +1,136 @@
 @model List<PapelArt.Models.Movimentacao>
 
+@{
+    ViewData["Title"] = "Gerar Relatórios";
+    Layout = null;
+}
 
-<div class="cadastro-listaprod-container">
-    <h2 class="cadastro-titulo">📋 Relatório de Movimentações</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PapelArt</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/login-cadastro.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/cadastro-produto.css" />
+</head>
+
+<body class="Relatórios">
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <a asp-controller="Home" asp-action="Menu" title="Voltar ao Menu">
+                <img src="~/images/logo.jpg" alt="Logo PapelArt - Voltar ao Menu" />
+            </a>
+        </div>
+        <div class="titulo">
+            <h1>PapelArt - Material Escolar</h1>
+            <h1>SISTEMA DE CONTROLE DE ESTOQUE</h1>
+        </div>
+    </header>
+
+    <div style="container-titulo">
+        <h1 class="cadastro-titulo">RELATÓRIO DE MOVIMENTAÇÕES</h1>
+    </div>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container-centered" style="margin-bottom: 0;">
+        <div class="cadastro-produto-container">
+
+            <div class="cadastro-listaprod-container">
+
+
+                <!-- Tabela do Relatório -->
+                <div style="overflow-x: auto; margin-bottom: 0;">
+                    <table class="table table-striped"
+                        style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                        <thead style="background: linear-gradient(180deg, #FF7C2C, #F33E33); color: white;">
+                            <tr>
+                                <th style="padding: 15px;">Data/Hora</th>
+                                <th style="padding: 15px;">Produto</th>
+                                <th style="padding: 15px;">Tipo</th>
+                                <th style="padding: 15px;">Qtd</th>
+                                <th style="padding: 15px;">Valor Unit.</th>
+                                <th style="padding: 15px;">Total</th>
+                                <th style="padding: 15px;">Usuário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in Model)
+                            {
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 12px;">@m.DataMovimentacao.ToString("dd/MM - HH:mm")</td>
+                                    <td style="padding: 12px; font-weight: 500;">@(m.Produto?.Nome ?? "Sem Produto")</td>
+                                    <td style="padding: 12px;">
+                                        <span
+                                            style="color: @(m.Tipo == PapelArt.Models.TipoMovimentacao.Entrada ? "#28a745" : "#dc3545"); font-weight: bold; padding: 4px 8px; border-radius: 12px; background: rgba(255,255,255,0.2);">
+                                            @m.Tipo
+                                        </span>
+
+                                    </td>
+                                    <td style="padding: 12px; font-weight: bold; font-size: 16px;">@m.Quantidade</td>
+                                    <td style="padding: 12px;">R$ @m.ValorUnitario.ToString("N2")</td>
+                                    <td style="padding: 12px; font-weight: bold; color: #F33E33; font-size: 16px;">R$
+                                        @m.ValorTotal.ToString("N2")</td>
+                                    <td style="padding: 12px;">@(m.Usuario?.Nome ?? "Sem Usuário")</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <!-- ✅ TOTAL AQUI - PERTO DA TABELA! -->
+                        <tfoot
+                            style="background: #f8f9fa; font-weight: bold; font-size: 16px; border-top: 3px solid #FF7C2C;">
+                            <tr>
+                                <td colspan="7" style="padding: 15px; text-align: center; color: #F33E33;">
+                                    Total de registros: <strong>@Model.Count</strong>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
     
     <!-- Botões de Exportação -->
-    <div style="text-align: center; margin-bottom: 30px;">
-        <button onclick="window.print()" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px;">
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px; margin-bottom: 30px; flex-wrap: wrap;">
+        <button class="painel-link" onclick="window.print()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
             🖨️ IMPRIMIR
         </button>
-        <button onclick="exportToPDF()" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px; background: linear-gradient(180deg, #28a745, #20c997);">
-            📄 PDF
+        <button class="painel-link" onclick="exportToPDF()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
+            📄 SALVAR PDF
         </button>
-        <a asp-action="Index" class="btn-cadastrar-produto" style="padding: 10px 25px; margin: 0 10px; background: linear-gradient(180deg, #6c757d, #495057); text-decoration: none; display: inline-block; line-height: 1.5;">
+        <a asp-action="Index" class="painel-link" style="width: 200px; text-align: center">
             🔄 NOVO RELATÓRIO
         </a>
     </div>
 
-    <!-- Tabela do Relatório -->
-    <div style="overflow-x: auto; margin-bottom: 30px;">
-        <table class="table table-striped" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-            <thead style="background: linear-gradient(180deg, #FF7C2C, #F33E33); color: white;">
-                <tr>
-                    <th style="padding: 15px;">Data/Hora</th>
-                    <th style="padding: 15px;">Produto</th>
-                    <th style="padding: 15px;">Tipo</th>
-                    <th style="padding: 15px;">Qtd</th>
-                    <th style="padding: 15px;">Valor Unit.</th>
-                    <th style="padding: 15px;">Total</th>
-                    <th style="padding: 15px;">Usuário</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var m in Model)
-                {
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 12px;">@m.DataMovimentacao.ToString("dd/MM<br>HH:mm")</td>
-                        <td style="padding: 12px; font-weight: 500;">@m.Produto.Nome</td>
-                        <td style="padding: 12px;">
-                            <span style="color: @(m.Tipo == PapelArt.Models.TipoMovimentacao.Entrada ? "#28a745" : "#dc3545"); font-weight: bold; padding: 4px 8px; border-radius: 12px; background: rgba(255,255,255,0.2);">
-    @m.Tipo
-</span>
 
-                        </td>
-                        <td style="padding: 12px; font-weight: bold; font-size: 16px;">@m.Quantidade</td>
-                        <td style="padding: 12px;">R$ @m.ValorUnitario.ToString("N2")</td>
-                        <td style="padding: 12px; font-weight: bold; color: #F33E33; font-size: 16px;">R$ @m.ValorTotal.ToString("N2")</td>
-                        <td style="padding: 12px;">@m.Usuario.Nome</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+    <script>
+        function exportToPDF() {
+            window.print();
+        }
+    </script>
 
-    <p class="campos-obrigatorios" style="margin-top: 0;">
-        Total de registros: <strong>@Model.Count</strong>
-    </p>
-</div>
+    <!-- RODAPÉ -->
+    <footer class="menu-footer">
+        <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
+        <a href="/Home/Index" class="footer-btn">SAIR &#8680</a>
+    </footer>
 
-<script>
-function exportToPDF() {
-    window.print();
-}
-</script>
+</body>
+
+</html>

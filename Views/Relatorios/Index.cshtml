@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="~/css/cadastro-produto.css" />
 </head>
 
-<body class="Cadastro de Produto">
+<body class="Relatórios">
 
     <!-- Cabeçalho -->
     <header class="header">
@@ -111,6 +111,23 @@
         <a href="@Url.Action("Index", "Movimentacoes")" class="painel-link">➕ Movimentações</a>
         <a href="@Url.Action("Menu", "Home")" class="painel-link">🏠 Menu Principal</a>
     </div>
+
+
+    <!-- Botões de Exportação -->
+    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
+        <button class="painel-link" onclick="window.print()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
+            🖨️ IMPRIMIR
+        </button>
+        <button class="painel-link" onclick="exportToPDF()"
+            style="outline: none !important; border: none !important; font-family: Zen Maru Gothic, sans-serif; width: 200px;">
+            📄 SALVAR PDF
+        </button>
+        <a asp-action="Index" class="painel-link" style="width: 200px; text-align: center">
+            🔄 NOVO RELATÓRIO
+        </a>
+    </div>
+
 
     <!-- RODAPÉ -->
     <footer class="menu-footer">
