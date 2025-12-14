@@ -48,6 +48,7 @@
 
     font-size: 1.5vw;
     letter-spacing: 1px;
+    text-decoration: none;
 
     color: white;
     text-shadow: 0px 2px 1px #F33E33;
@@ -58,10 +59,12 @@
     transition: transform 0.2s ease;
     min-width: 250px;
     text-align: center;
+    display: inline-block; 
 }
 
 .menu-btn:hover {
     transform: scale(1.05);
+    text-decoration: none;
 }
 
 /* ===== RODAPÉ ===== */

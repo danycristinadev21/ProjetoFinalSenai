@@ -315,6 +315,7 @@ form.user-form input {
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
+    font-family: "Zen Maru Gothic", sans-serif;
     padding: 10px 30px;
     border: none;
     border-radius: 10px;
@@ -409,3 +410,4 @@ footer img.rodape {
     height: auto;
     display: block;
 }
+

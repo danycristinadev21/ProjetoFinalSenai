@@ -46,31 +46,40 @@
     <div class="container-centered">
         <div class="cadastro-produto-container">
 
-            <!-- Formulário de Consulta -->
-            <form method="get" class="form-produto form-area" asp-action="Resultados" asp-controller="Estoque">
+            <!-- Formulário de Consulta - BOTÕES PERFEITOS! -->
+<form method="get" class="form-produto form-area" asp-action="Resultados" asp-controller="Estoque">
+    <div class="linha">
+        <label>CÓDIGO:</label>
+        <input type="text" name="codigo" />
+    </div>
 
-                <div class="linha">
-                    <label>CÓDIGO:</label>
-                    <input type="text" name="codigo" />
-                </div>
+    <div class="linha">
+        <label>NOME:</label>
+        <input type="text" name="nome" />
+    </div>
 
-                <div class="linha">
-                    <label>NOME:</label>
-                    <input type="text" name="nome" />
-                </div>
+<!-- PRIMEIRO BOTÃO -->
+<div class="linha">
+    <button class="btn-cadastrar-produto" type="submit" 
+            style="width: 350px; height: 50px; line-height: 1.2; padding: 0;">
+        CONSULTAR
+    </button>
+</div>
 
-                <div class="linha">
-                    <button class="btn-cadastrar-produto" type="submit">CONSULTAR</button>
-                </div>
+<!-- SEGUNDO BOTÃO - FONTE EXATA! -->
+<div class="linha">
+    <a href="@Url.Action("Resultados", "Estoque", new { showAll = true })" 
+       class="btn-cadastrar-produto"
+       style="width: 350px; height: 50px; line-height: 50px; padding: 0; display: block; text-align: center; text-decoration: none;">
+        CONSULTA GERAL
+    </a>
+</div>
 
-                <div class="linha">
-                    <a href="@Url.Action("Resultados", "Estoque", new { showAll = true })"
-                        class="btn-cadastrar-produto">
-                        CONSULTA GERAL
-                    </a>
-                </div>
 
-            </form>
+</form>
+
+
+
 
             <!-- Painel de Navegação -->
             <div class="painel-rapido">

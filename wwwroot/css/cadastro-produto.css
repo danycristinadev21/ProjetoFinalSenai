@@ -101,6 +101,7 @@ h2 {
   color: #fff;
   font-weight: 400;
   font-size: 12px;
+  font-family: "Zen Maru Gothic", sans-serif;
   text-decoration: none;
   text-shadow: 1px 1px 2px #F33E33;
   border-radius: 5px;
@@ -180,8 +181,9 @@ form.form-produto select {
 
   background: linear-gradient(180deg, #FF7C2C, #F33E33);
   color: #fff;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: "Zen Maru Gothic", sans-serif;
 
   border-radius: 40px;
   border: none;
@@ -242,9 +244,9 @@ form.form-produto select {
   display: block;
   margin-bottom: 18px;
   padding: 14px 20px;
-  background: linear-gradient(180deg, #FFC629);
+  background: linear-gradient(190deg, #FFC629);
   color: #fff;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 18px;
   text-decoration: none;
   text-shadow: 1px 1px 2px #F33E33;

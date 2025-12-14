@@ -12,13 +12,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 10px;
+  padding: 20px 10px;
 }
 
 .card-login {
   background: rgba(255,255,255,0.5);
   border-radius: 15px;
-  padding: 40px 35px;
+  padding: 30px 35px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   width: 100%;
   max-width: 420px;
@@ -27,9 +27,17 @@
 
 .card-login h2 {
   color: var(--vermelho);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   text-shadow: 1px 1px var(--amarelo);
   letter-spacing: 2px;
+  font-size: 34px;
+}
+
+.card-login h3 {
+  color: var(--vermelho);
+  margin-bottom: 15px;
+  text-shadow: 1px 1px var(--amarelo);
+  letter-spacing: 1px;
   font-size: 34px;
 }
 
@@ -56,10 +64,11 @@
   background: linear-gradient(90deg, var(--laranja), var(--vermelho));
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  font-family: "Zen Maru Gothic", sans-serif;
   letter-spacing: 2px;
-  padding: 12px;
+  padding: 8px;
   border-radius: 10px;
   margin-top: 20px;
   cursor: pointer;
@@ -155,6 +164,25 @@
     border: 3px solid #FF7C2C;
     box-shadow: 0px 4px 0px white;
 }
+
+/* Inputs e botões */
+/* FORMULÁRIOS: aplicável somente a login / cadastro de usuário */
+form.login-form label,
+form.user-form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+form.login-form input,
+form.user-form input {
+    width: 90%;
+    padding: 8px;
+    border: 2px solid #FF7C2C;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
 
 
 
