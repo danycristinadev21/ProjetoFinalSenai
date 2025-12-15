@@ -54,70 +54,71 @@ namespace PapelArt.Controllers
         }
 
         [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Create(Movimentacao movimentacao)
-{
-    if (!ModelState.IsValid)
-    {
-        ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
-        ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
-        return View(movimentacao);
-    }
-
-    var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == movimentacao.ProdutoId);
-    if (produto == null)
-    {
-        ModelState.AddModelError("", "Produto não encontrado.");
-        ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
-        ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
-        return View(movimentacao);
-    }
-
-// ✅ FUNCIONA 100% - PEGA DO TEMP DATA DO LOGIN
-var mensagemLogin = TempData["Success"]?.ToString() ?? "";
-var nomeLogado = "";
-
-if (mensagemLogin.Contains("Bem-vindo(a),"))
-{
-    nomeLogado = mensagemLogin.Split(',')[1].Trim().Replace("!", "");
-}
-
-var usuarioLogado = await _context.Usuarios.FirstOrDefaultAsync(u => u.Nome == nomeLogado);
-movimentacao.UsuarioId = usuarioLogado?.Id ?? 1;
-
-
-
-
-    movimentacao.ValorUnitario = produto.Preco;
-    movimentacao.ValorTotal = movimentacao.Quantidade * produto.Preco;
-
-    // Lógica de estoque (igual)
-    if (movimentacao.Tipo == TipoMovimentacao.Entrada)
-    {
-        produto.Quantidade += movimentacao.Quantidade;
-    }
-    else if (movimentacao.Tipo == TipoMovimentacao.Saida)
-    {
-        if (produto.Quantidade < movimentacao.Quantidade)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Movimentacao movimentacao)
         {
-            ModelState.AddModelError("", $"Estoque insuficiente. Disponível: {produto.Quantidade}");
-            ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
-            ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
-            return View(movimentacao);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
+                ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
+                return View(movimentacao);
+            }
+
+            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == movimentacao.ProdutoId);
+            if (produto == null)
+            {
+                ModelState.AddModelError("", "Produto não encontrado.");
+                ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
+                ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
+                return View(movimentacao);
+            }
+
+            // ✅ FUNCIONA 100% - PEGA DO TEMP DATA DO LOGIN
+            //var mensagemLogin = TempData["Success"]?.ToString() ?? "";
+            //var nomeLogado = TempData["Success"]?.ToString()?.Split(',')[1]?.Trim().Replace("!", "") ?? "";
+            //var usuarioLogado = await _context.Usuarios.FirstOrDefaultAsync(u => u.Nome == nomeLogado);
+            //movimentacao.UsuarioId = usuarioLogado?.Id ?? 1;
+
+            if (int.TryParse(HttpContext.Session.GetString("UsuarioId"), out int usuarioId))
+            {
+                movimentacao.UsuarioId = usuarioId;
+            }
+            else
+            {
+                movimentacao.UsuarioId = 1; // fallback
+            }
+
+
+            movimentacao.ValorUnitario = produto.Preco;
+            movimentacao.ValorTotal = movimentacao.Quantidade * produto.Preco;
+
+            // Lógica de estoque (igual)
+            if (movimentacao.Tipo == TipoMovimentacao.Entrada)
+            {
+                produto.Quantidade += movimentacao.Quantidade;
+            }
+            else if (movimentacao.Tipo == TipoMovimentacao.Saida)
+            {
+                if (produto.Quantidade < movimentacao.Quantidade)
+                {
+                    ModelState.AddModelError("", $"Estoque insuficiente. Disponível: {produto.Quantidade}");
+                    ViewBag.Produtos = new SelectList(_context.Produtos.ToList(), "Id", "Nome", movimentacao.ProdutoId);
+                    ViewBag.ListaProdutos = _context.Produtos.Select(p => new { p.Id, p.Preco }).ToList();
+                    return View(movimentacao);
+                }
+                produto.Quantidade -= movimentacao.Quantidade;
+            }
+
+            movimentacao.DataMovimentacao = DateTime.Now;
+            _context.Movimentacoes.Add(movimentacao);
+            _context.Produtos.Update(produto);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
-        produto.Quantidade -= movimentacao.Quantidade;
-    }
-
-    movimentacao.DataMovimentacao = DateTime.Now;
-    _context.Movimentacoes.Add(movimentacao);
-    _context.Produtos.Update(produto);
-    await _context.SaveChangesAsync();
-
-    return RedirectToAction(nameof(Index));
-}
 
 
-        
+
         // Usado para JS (se quiser usar futuramente)
         public IActionResult GetValorProduto(int id)
         {

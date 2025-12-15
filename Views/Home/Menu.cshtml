@@ -4,6 +4,7 @@
 }
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/layout.css" />
     <link rel="stylesheet" href="~/css/menu.css" />
-    
+
 </head>
+
 <body>
 
     <!-- Cabeçalho -->
@@ -44,36 +46,39 @@
         }
     </header>
 
+    @if (TempData["Success"] != null)
+    {
+        <div class="bemvindo-titulo" role="alert">
+            @TempData["Success"]
+        </div>
+    }
 
+    <div class="menu-wrapper">
 
+        <h1 class="menu-title">ESCOLHA UMA FUNÇÃO</h1>
 
+        <div class="menu-buttons">
 
-<div class="menu-wrapper">
+            <a href="/Categorias/Create" class="menu-btn">CADASTRAR<br />CATEGORIA</a>
 
-    <h1 class="menu-title">ESCOLHA UMA FUNÇÃO</h1>
+            <a href="/Produtos/Create" class="menu-btn">CADASTRAR<br />PRODUTO</a>
 
-    <div class="menu-buttons">
+            <a href="/Estoque/Consulta" class="menu-btn">CONSULTAR<br />ESTOQUE</a>
 
-        <a href="/Categorias/Create" class="menu-btn">CADASTRAR<br/>CATEGORIA</a>
+            <a href="/Movimentacoes/Create" class="menu-btn">
+                REGISTRAR<br />ENTRADA/SAÍDA
+            </a>
 
-        <a href="/Produtos/Create" class="menu-btn">CADASTRAR<br/>PRODUTO</a>
+            <a href="/Relatorios/Index" class="menu-btn">
+                GERAR<br />RELATÓRIO
+            </a>
 
-        <a href="/Estoque/Consulta" class="menu-btn">CONSULTAR<br/>ESTOQUE</a>
-
-        <a href="/Movimentacoes/Create" class="menu-btn">
-            REGISTRAR<br/>ENTRADA/SAÍDA
-        </a>
-
-        <a href="/Relatorios/Index" class="menu-btn">
-            GERAR<br/>RELATÓRIO
-        </a>
-
+        </div>
     </div>
-</div>
 
-<!-- RODAPÉ -->
+    <!-- RODAPÉ -->
     <footer class="menu-footer">
-         
+
         <a href="javascript:history.back()" class="footer-btn">&#8678 VOLTAR</a>
 
         @using (Html.BeginForm("Logout", "Usuarios", FormMethod.Post))
@@ -88,4 +93,5 @@
     </footer>
 
 </body>
+
 </html>

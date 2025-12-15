@@ -37,13 +37,6 @@
                     @ViewBag.Erro
                 </div>
             }
-            
-            @if (TempData["Success"] != null)
-            {
-                <div class="alert alert-success" role="alert">
-                    @TempData["Success"]
-                </div>
-            }
 
             <form asp-action="Login" method="post">
                 <label class="login-form" for="email">E-mail*:</label>

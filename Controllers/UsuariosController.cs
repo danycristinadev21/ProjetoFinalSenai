@@ -42,7 +42,6 @@ public class UsuariosController : Controller
         var usuario = await _context.Usuarios
             .FirstOrDefaultAsync(u => u.Email == email && u.Senha == senhaHash);
 
-
         if (usuario == null)
         {
             ViewBag.Erro = "E-mail ou senha inválidos.";
@@ -50,12 +49,12 @@ public class UsuariosController : Controller
         }
 
         var claims = new List<Claim>
-        {
-            new Claim("Id", usuario.Id.ToString()),
-            new Claim(ClaimTypes.Name, usuario.Nome),
-            new Claim(ClaimTypes.Email, usuario.Email),
-            new Claim("NivelAcesso", usuario.NivelAcesso)
-        };
+    {
+        new Claim("Id", usuario.Id.ToString()),
+        new Claim(ClaimTypes.Name, usuario.Nome),
+        new Claim(ClaimTypes.Email, usuario.Email),
+        new Claim("NivelAcesso", usuario.NivelAcesso)
+    };
 
         var claimsIdentity = new ClaimsIdentity(
             claims,
@@ -78,60 +77,64 @@ public class UsuariosController : Controller
         HttpContext.Session.SetString("UsuarioNome", usuario.Nome);
         HttpContext.Session.SetString("UsuarioNivel", usuario.NivelAcesso);
 
+        // Mensagem de sucesso EXATA do Trecho 1
+        TempData["Success"] = $"Bem-vindo(a), {usuario.Nome}!";
+
         // depois do login → vai para o Menu
         return RedirectToAction("Menu", "Home");
     }
 
+
     // ========== CADASTRO ==========
 
-        [HttpGet]
-        public IActionResult Cadastro()
+    [HttpGet]
+    public IActionResult Cadastro()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Cadastrar(Usuario usuario)
+    {
+        Console.WriteLine($"[DEBUG] Tentando cadastrar usuário: {usuario.Email}");
+
+        if (!ModelState.IsValid)
         {
-            return View();
+            TempData["Error"] = "Por favor, preencha todos os campos corretamente.";
+            return View("Cadastro", usuario);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Cadastrar(Usuario usuario)
+        bool existeEmail = await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
+        if (existeEmail)
         {
-            Console.WriteLine($"[DEBUG] Tentando cadastrar usuário: {usuario.Email}");
-
-            if (!ModelState.IsValid)
-            {
-                TempData["Error"] = "Por favor, preencha todos os campos corretamente.";
-                return View("Cadastro", usuario);
-            }
-
-            bool existeEmail = await _context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
-            if (existeEmail)
-            {
-                TempData["Error"] = "Este e-mail já está cadastrado.";
-                return View("Cadastro", usuario);
-            }
-
-            // Criptografar senha antes de salvar
-            usuario.Senha = GerarHash(usuario.Senha);
-            usuario.NivelAcesso = "usuario";
-
-            _context.Add(usuario);
-            await _context.SaveChangesAsync();
-
-            TempData["Success"] = "Usuário cadastrado com sucesso!";
-            return RedirectToAction("Login");
+            TempData["Error"] = "Este e-mail já está cadastrado.";
+            return View("Cadastro", usuario);
         }
 
-        // ========== MÉTODO AUXILIAR ==========
-        private string GerarHash(string input)
+        // Criptografar senha antes de salvar
+        usuario.Senha = GerarHash(usuario.Senha);
+        usuario.NivelAcesso = "usuario";
+
+        _context.Add(usuario);
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "Usuário cadastrado com sucesso!";
+        return RedirectToAction("Login");
+    }
+
+    // ========== MÉTODO AUXILIAR ==========
+    private string GerarHash(string input)
+    {
+        using (var sha = SHA256.Create())
         {
-            using (var sha = SHA256.Create())
-            {
-                var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var sb = new StringBuilder();
-                foreach (var b in bytes)
-                    sb.Append(b.ToString("x2"));
-                return sb.ToString();
-            }
+            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
+            var sb = new StringBuilder();
+            foreach (var b in bytes)
+                sb.Append(b.ToString("x2"));
+            return sb.ToString();
         }
+    }
 
     public async Task<IActionResult> Logout()
     {
